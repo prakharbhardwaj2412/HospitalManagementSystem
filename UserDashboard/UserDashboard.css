@@ -1,0 +1,193 @@
+/* The side navigation menu */
+.sidenav {
+  height: 98%; /* 100% Full-height */
+  /*width: 250px;  0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  /*top: 10%;  Stay at the top */
+  left: 0;
+  background-color: white; /* Black: #111*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  /*transition: 0.5s;  0.5 second transition effect to slide in the sidenav */
+  /*box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);*/
+  margin: 7px 5px ;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background-color: #8d21fd;
+  background-image: linear-gradient(0deg, #8d21fd 0%, #6f21ff 100%);
+
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  margin-bottom: 8px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover:not(.activeTab) {
+  color: white;
+  /*background-color: white;*/
+  /*margin-left: 10px;*/
+  /*background-image: linear-gradient(to right, #e84a5f, #e84a5f, white);*/
+  /*border-radius: 10px 0 0 10px;*/
+  transform: translateY(-3px) scale(1.1);
+  transition: all 01s ease;
+
+}
+
+.sidenav .activeTab {
+  background-color: white;
+  margin-left: 16px;
+  border-radius: 10px 0 0 10px;
+  color: #8d21fd;
+  transition: all 0.3s ease;
+  padding: 8px 8px 8px 24px;
+}
+
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  font-size: 36px;
+  margin-left: 40px;
+  color: white;
+}
+
+
+.sidenav #logout {
+  /*display: block;*/
+  position: absolute;
+  bottom: 20px;
+}
+
+.navbar {
+  /*height: 70px;*/
+  /*box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);*/
+  /*background-color: #e84a5f;*/
+  margin: 7px 5px ;
+  margin-left: 110px;
+  border-radius: 20px;
+}
+.navbar button {
+  border: none;
+}
+
+.navbar input {
+  border: none;
+  background-color: #eeecee;
+  border-radius: 10px 0 0 10px;
+  height: 40px;
+  padding-left:20px;
+}
+.navbar #searchBtn {
+  background-color: #eeecee;
+  border-radius: 0 10px 10px 0;
+  border: none;
+
+}
+.navbar #Notify {
+  /*position: absolute;*/
+  /*float: right;*/
+}
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 0px;
+}
+
+@media (min-width: 1200px) {
+  .sidenav {
+    width: 90px;
+    top: 0;
+  }
+  .sidenav .closebtn {
+    visibility: hidden;
+  }
+  .navbar input {
+    width: 40%;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  .sidenav {
+    width: 90px;
+    top: 0;
+  }
+  .sidenav .closebtn {
+    visibility: hidden;
+  }
+  .navbar input {
+    width: 50%;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .sidenav {
+    width: 0; /* 0 width - change this with JavaScript */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    top: 0;
+  }
+  .navbar {
+    margin-left: 7px;
+  }
+  .navbar input {
+    width: 40%;
+  }
+  .navbar > div.input-group {
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 576px) {
+  .sidenav {
+    width: 0; /* 0 width - change this with JavaScript */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    top: 0;
+  }
+  .navbar {
+    margin-left: 7px;
+  }
+  .navbar input {
+    width: 60%;
+  }
+  .navbar > div.input-group {
+    visibility: hidden;
+  }
+}
+
+
+@media (max-width: 575px) {
+  .sidenav {
+    width: 0; /* 0 width - change this with JavaScript */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    top: 0;
+  }
+  .navbar {
+    margin-left: 7px;
+  }
+  .navbar input {
+    width: 70%;
+  }
+  .navbar > div.input-group {
+    visibility: hidden;
+  }
+}
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

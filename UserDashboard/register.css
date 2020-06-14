@@ -1,0 +1,92 @@
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+	/*background-image: linear-gradient(-45deg, #5956ce, #b251c4);*/
+    height: 160vh;
+    background-repeat: no-repeat;
+    position: relative;
+    background-color: #fb8d61;
+	background-image: linear-gradient(319deg, #fb8d61 0%, #ff5ac1 100%);
+
+}
+
+.box {
+	position: relative;
+	top: 8%;
+	box-shadow: 0px 40px 40px rgba(0, 0, 0, 0.7);
+	width: 100%;
+	height: auto;
+	padding: 2.5rem 2rem 2rem;
+	border: 5px  white solid;
+	border-radius: 20px;
+	/*position: static; */
+	/*margin-top: 8%;*/
+	background: rgba(255,255,255, 0.8);
+	/*float: center;*/
+}
+
+.h {
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 2.8em;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+.formDiv {
+	width: 100%;
+	margin: 0;
+}
+
+
+input:focus {
+	/*text-decoration: none;*/
+	border-bottom: 3px solid #5956ce;
+	transform: translateY(-2px) scaleX(1.04);
+	transition: all 0.4s ease;
+	border: none;
+	/*outline: none;*/
+}
+
+
+label {
+	letter-spacing: 1px;
+	padding-left: 1px;
+	font-weight: 800;
+}
+.BtnRegister {
+ 	/*background-image: linear-gradient(45deg, #5956ce, #b251c4);*/
+ 	text-decoration: none;
+ 	letter-spacing: 1px;
+ 	margin-top: 20px;
+ 	margin-bottom: 20px;
+ 	font-weight: 800;
+ 	border: none;
+ 	/*color: white;*/
+ 	background-color: #fb8d61;
+	background-image: linear-gradient(319deg, #fb8d61 0%, #ff5ac1 100%);
+
+ }
+.BtnRegister:hover {
+	transform: translateY(-2px) scaleX(1.03);
+	transition: all 0.3s;
+	/*background-color: yellow;*/
+	/*background-image: linear-gradient(-45deg, #5956ce, #b251c4);*/
+    background-color: #fb8d61;
+	background-image: linear-gradient(-319deg, #fb8d61 0%, #ff5ac1 100%);
+
+}
+
+.ng-touched.ng-valid {
+  border-bottom: 2px green solid;
+}
+
+.ng-touched.ng-invalid {
+  border-bottom: 2px red solid;
+}
+
+span {
+	font-size: 14px;
+	margin-top: 0;
+	color: #757575;
+}

@@ -1,0 +1,131 @@
+body {
+	margin: 0;
+	/*font-family: "Montserrat";*/
+	/*display: flex;*/
+	/*justify-content: center;*/
+	/*align-items: center;*/
+	box-sizing: border-box;
+	/*background-image: linear-gradient(-45deg, #5956ce, #b251c4);*/
+    height: 100vh;
+    background-repeat: no-repeat;
+    position: relative;
+    background-color: #fb8d61;
+	background-image: linear-gradient(319deg, #fb8d61 0%, #ff5ac1 100%);
+
+}
+
+.box {
+	box-shadow: 0px 40px 40px rgba(0, 0, 0, 0.7);
+	border-radius: 8px;
+    background-color: #fff;
+    padding: 5rem 4rem 7rem;
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 20%;
+    /*padding: 2%;*/
+
+}
+
+.h {
+	text-align: center;
+	font-size: 2.5em;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+.BtnSignIn {
+	/*background-image: linear-gradient(-45deg, #5956ce, #b251c4);*/
+	/*float: center;*/
+	letter-spacing: 1px;
+	border: none;
+	margin-top: 1.4em;
+	background-color: #fb8d61;
+	background-image: linear-gradient(319deg, #fb8d61 0%, #ff5ac1 100%);
+
+}
+.BtnSignIn:hover {
+	/*background-image: linear-gradient(45deg, #5956ce, #b251c4);*/
+	transform: translateY(-2px) scaleX(1.04);
+	transition: all 0.3s ease;
+	background-color: #fb8d61;
+	background-image: linear-gradient(-319deg, #fb8d61 0%, #ff5ac1 100%);
+
+}
+
+.formDiv {
+	width: 300px;
+	margin: 0 auto;
+}
+
+.input-form {
+	display: flex;
+	flex-direction: column-reverse;
+	margin: 1.2em 0 0 0;
+}
+input, label {
+	transition: 0.4s ease;
+}
+
+label {
+	padding-left: 10px;
+	transform: translate(4px, -14px) scale(1.02);
+	margin-bottom: 2px;
+	cursor: text;
+	transform-origin: left top;
+	color: #757575;
+	position: absolute;
+	letter-spacing: 1px;
+}
+/*#eye-btn {
+	transform-origin: right;
+	padding-left: 10px;
+	transform: translate(4px, -14px) scale(1.2);
+	margin-bottom: 2px;
+	cursor: text;
+	color: #757575;
+	position: absolute;
+	float: right;
+}
+*/
+input:focus, input:not(:placeholder-shown) {
+	border: none;
+	/*text-decoration: none;*/
+	border-bottom: 3px solid #5956ce;
+	/*transform: scaleX(1.02);*/
+	transition: all 0.3s ease;
+
+}
+
+input:not(:placeholder-shown) ~ label, input:focus ~ label {
+	transform: translate(10px, -35px) scale(0.8);
+	padding-left: 0px;
+	color: black;
+}
+
+input {
+	font-size: 1.2em;
+	padding: 30px 10px 10px 10px;
+	border: none;
+	border-bottom: 2px solid #9e9e9e;
+	/*background-color: #f2f2f2;*/
+	border-radius: 5px 5px 0px 0px;
+}
+
+input::placeholder {
+	opacity: 0;
+}
+
+.ng-touched.ng-valid {
+  border-bottom: 2px green solid;
+}
+
+.ng-touched.ng-invalid {
+  border-bottom: 2px red solid;
+}
+
+span {
+	font-size: 14px;
+	margin-top: 0;
+	color: #757575;
+}
