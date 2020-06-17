@@ -1,0 +1,15 @@
+.container {
+	height: auto;
+	padding: 20px;
+	background-color: #ffffff;
+	/*opacity: 0.6;*/
+	border-radius: 25px;
+}
+
+img {
+	height: 200px;
+	width: 150px;
+}
+#img {
+	float: right;
+}

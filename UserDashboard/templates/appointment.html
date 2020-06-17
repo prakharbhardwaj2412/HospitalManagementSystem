@@ -1,0 +1,69 @@
+<div class="container">
+	<form>
+		<div id="h1">Take Appointment</div>
+		<hr>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Name:</label>
+      <span>{}</span>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Patient Id:</label>
+      <span> {}</span>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Contact no:</label>
+      <span>{}</span>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Email Id:</label>
+      <span> {}</span>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="inputCity">Department</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Doctor Name</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputZip">Doctor Id</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Problem</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Describe your problem here"></textarea>
+  </div>
+  <div class="form-row">
+  	<div class="form-group col-md-6">
+  		<label>Visiting Fee:</label>
+  		<span>{}</span>
+  	</div>
+  	<div class="form-group col-md-6">
+  		<label>Payment Status:</label>
+  		<div class="form-check form-check-inline">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+  			<label class="form-check-label" for="inlineCheckbox1">Paid</label>
+		</div>
+		<div class="form-check form-check-inline">
+  			<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+  			<label class="form-check-label" for="inlineCheckbox2">Unpaid</label>
+		</div>
+  	</div>
+  </div>
+  <center><button type="submit" class="btn btn-primary btn-lg d-flex justify-content-center">Confirm Appointment</button></center>
+</form>
+</div>
+<link rel="stylesheet" type="text/css" href="templates/appointment.css">

@@ -13,9 +13,24 @@
 			templateUrl: 'templates/home.html'
 		})
 
+		$stateProvider.state('appointment', {
+			url: '/appointment',
+			templateUrl: 'templates/appointment.html'
+		})
+
 		$stateProvider.state('medicalHistory', {
 			url: '/medicalHistory',
 			templateUrl: 'templates/medicalHistory.html'
+		})
+
+		$stateProvider.state('doctorsList', {
+			url: '/doctorsList',
+			templateUrl: 'templates/doctorslist.html'
+		})
+
+		$stateProvider.state('profile', {
+			url: '/profile',
+			templateUrl: 'templates/profile.html'
 		})
 
 
