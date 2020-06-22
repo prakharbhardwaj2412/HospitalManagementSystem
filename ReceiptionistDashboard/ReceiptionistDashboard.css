@@ -1,17 +1,20 @@
+body {
+  background-color: #f9f9f9;
+  /*background-attachment: scroll;*/
+  /*height: 823px;*/
+}
+
 /* The side navigation menu */
 .sidenav {
   height: 98%; /* 100% Full-height */
-  /*width: 250px;  0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
-  /*top: 10%;  Stay at the top */
   left: 0;
   background-color: white; /* Black: #111*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
-  /*transition: 0.5s;  0.5 second transition effect to slide in the sidenav */
-  /*box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);*/
-  margin: 7px 5px ;
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  margin: 8px 5px ;
   margin-bottom: 10px;
   border-radius: 20px;
   background-color: #8d21fd;
@@ -27,6 +30,7 @@
   color: white;
   display: block;
   transition: 0.3s;
+  margin-bottom: 8px;
 }
 
 /* When you mouse over the navigation links, change their color */
@@ -37,70 +41,147 @@
   /*background-image: linear-gradient(to right, #e84a5f, #e84a5f, white);*/
   /*border-radius: 10px 0 0 10px;*/
   transform: translateY(-3px) scale(1.1);
-  transition: all 0.3s ease;
+  transition: all 01s ease;
 
 }
+
+.sidenav .activeTab {
+  background-color: #f9f9f9;
+  margin-left: 16px;
+  border-radius: 10px 0 0 10px;
+  color: #8d21fd;
+  transition: all 0.3s ease;
+  padding: 8px 8px 8px 24px;
+}
+
 
 /* Position and style the close button (top right corner) */
 .sidenav .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
+  right: 40px;
   font-size: 36px;
-  margin-left: 50px;
+  margin-left: 40px;
+  color: white;
 }
 
-.sidenav .activeTab {
-  background-color: white;
-  margin-left: 10px;
-  border-radius: 10px 0 0 10px;
-  color: #8d21fd;
+
+.sidenav #logout {
+  /*display: block;*/
+  position: absolute;
+  bottom: 20px;
 }
 
 .navbar {
-  height: 70px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-  background-color: #e84a5f;
-  margin: 7px 5px ;
-  margin-left: 110px;
+  margin: 6px 0;
   border-radius: 20px;
 }
+.navbar button {
+  border: none;
+}
+
+.navbar input {
+  border: none;
+  background-color: #eceef3;
+  border-radius: 10px 0 0 10px;
+  height: 40px;
+  padding-left:20px;
+  margin-right: 0;
+  width: 88%;
+}
+.navbar input:focus {
+  outline: none;
+}
+.navbar #searchBtn {
+  background-color: #eceef3;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  height: 40px;
+  margin-left: 0;
+
+}
+
+
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left .5s;
   padding: 0px;
+  background-color: #f9f9f9;
+  height: 100vh;
+  /*margin-left: -10px;*/
+}
+
+.container-fluid {
+  margin-left: 0;
+  margin-right: 2rem;
+  padding: .5rem 1rem; 
+}
+
+.sidePlate {
+  width: 100%;
+  height: 88vh;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+}
+.sideSpace #h1 {
+  font-size: 2em;
+  font-weight: 600;
 }
 
 @media (min-width: 1200px) {
   .sidenav {
-    width: 100px;
+    width: 90px;
     top: 0;
   }
   .sidenav .closebtn {
     visibility: hidden;
+  }
+
+  #main {
+    margin-left: 95px;
+  }
+  .navbar .input-group {
+    width: 50%;
   }
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
   .sidenav {
-    width: 100px;
+    width: 90px;
     top: 0;
   }
   .sidenav .closebtn {
     visibility: hidden;
   }
+
+  #main {
+    margin-left: 95px;
+  }
+  .navbar .input-group {
+    width: 50%;
+  }
 }
 
 @media (max-width: 991px) and (min-width: 768px) {
   .sidenav {
-    width: 0; /* 0 width - change this with JavaScript */
+    width: 90px; /* 0 width - change this with JavaScript */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
     top: 0;
   }
-  .navbar {
-    margin-left: 7px;
+  .sidenav .closebtn {
+    visibility: hidden;
   }
+
+  #main {
+    margin-left: 95px;
+  }
+  .navbar .input-group {
+    width: 60%;
+  }
+
 }
 
 @media (max-width: 767px) and (min-width: 576px) {
@@ -112,7 +193,11 @@
   .navbar {
     margin-left: 7px;
   }
+  .sideSpace {
+    visibility: hidden;
+  }
 }
+
 
 @media (max-width: 575px) {
   .sidenav {
@@ -122,6 +207,9 @@
   }
   .navbar {
     margin-left: 7px;
+  }
+  .sideSpace {
+    visibility: hidden;
   }
 }
 

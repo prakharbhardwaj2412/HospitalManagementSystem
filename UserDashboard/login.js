@@ -12,29 +12,35 @@ function SigninController($scope, $location, $http) {
   $scope.Pass = "";
 
   $scope.onSubmit = function () {
-  	var UsrNm = $scope.UsrName;
-  	console.log(UsrNm);
-  	var Ps = $scope.Pass
-  	console.log(Ps);
-  	var obj = { "email": UsrNm, "password": Ps};
+  	var obj = { "username": $scope.UsrName, "password": $scope.Pass};
   	console.log(obj);
   	var jsnObj = JSON.stringify(obj);
   	console.log(jsnObj);
+    var storageObj = { "username": $scope.UsrName };
+    sessionStorage.setItem("username", JSON.stringify(storageObj));
 
     $http({
       method: "POST",
-      url: "#",
+      url: "http://33d706fa0680.ngrok.io/login/",
       data: jsnObj
     })
     .then(
       function Success(response){
         $scope.myWelcome = response.data;
         console.log($scope.myWelcome);
-        window.location.assign("dashboard.html");
+        var Resp = $scope.myWelcome;
+        if (Resp == "patient") {
+          window.alert("Login Successful");
+          window.location.assign("UserDashboard.html");  
+        }
+        else{
+          window.alert("wrong credientials");
+        }
+        
       }, 
      function Error(response){
         $scope.myWelcome = response.statusText;
-        window.alert("wrong credientials");
+        window.alert("cannot process request");
         console.log($scope.myWelcome);
       });
     

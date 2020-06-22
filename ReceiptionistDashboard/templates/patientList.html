@@ -1,0 +1,49 @@
+<div class="container">
+	<div id="h1">Patient List</div>
+	<a href="#"><i class="fas fa-plus-square fa-2x"></i></a><span style="font-size:1.5em; font-weight: 540; padding-left: 10px;">Add Patient</span>
+
+
+	<table class="table table-borderless PatientTable text-center">
+		  <thead>
+		    <tr>
+		      <th scope="col">Patient Id</th>
+		      <th scope="col">Name</th>
+		      <th scope="col">Status</th>
+		      <th scope="col">Edit</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row">1</th>
+		      <td>Mark Otto</td>
+		      <td>Active</td>
+		      <td><a href="#" ui-sref="patientEdit"><i class="fas fa-edit"></i></a></td>
+		    </tr>
+		</tbody>
+	</table>
+
+
+</div>
+
+<style>
+	.container {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.container #h1 {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.PatientTable {
+	background-color: #ffffff;
+	box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+	height: auto;
+	width: 100%;
+	border-radius: 25px;
+	font-size: 22px;
+	margin-top: 15px;
+	/*padding: 5px ;*/
+}
+</style>

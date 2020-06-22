@@ -40,10 +40,20 @@
 						            Name required
 						        </span>
 						  	</div>
-						  </div>
 
-						  <div class="row">
-						  	<div class="form-group col-md-12 input-group-lg">
+						  	<div class="form-group col-sm-12 col-xs-12 col-md-6 input-group-lg">
+						    	<label for="PtnUsrnm">Username</label>
+						    	<input type="text" id="PtnUsrnm" class="form-control" placeholder="Choose Username" name="PtnUsrnm"
+						    	ng-model="PtnUsrnm"
+						    	required
+						    	ng-keyup="UsernameCheck()">
+						    	<span >{{UsernameMessage}}</span>
+						    	<span ng-if="RegForm.PtnUsrnm.$invalid && RegForm.PtnUsrnm.$touched">
+						    		Choose a valid username
+						    	</span>
+						  	</div>
+
+						  	<div class="form-group col-sm-12 col-xs-12 col-md-6 input-group-lg">
 						    	<label for="Email">Email</label>
 						    	<input type="email"  class="form-control" placeholder="Enter email id" name="Email"
 						    	ng-model="Email"
@@ -54,30 +64,28 @@
 						  </div>
 
 						  <div class="row">
-						  	<div class="form-group col-md-6 input-group-lg">
+						  	<div class="form-group col-xs-12 col-sm-12 col-md-6 input-group-lg">
 						    	<label for="ContactNo">Contact number</label>
 						    	<input type="number"  class="form-control" placeholder="Enter mobile number" name="ContactNo"
 						    	ng-model="ContactNo">
 						  	</div>
-						  	<div class="form-group col-md-6 input-group-lg">
+						  	<div class="form-group col-xs-12 col-sm-12 col-md-6 input-group-lg">
 						    	<label for="Dob">Date of birth</label>
-						    	<input type="date"  class="form-control" placeholder="D.O.B." name="Dob"
+						    	<input type="date"  class="form-control" placeholder=" " name="Dob" id="Dob" 
 						    	ng-model="Dob">
 						  	</div>
-						  </div>
-
-						  <div class="row">
-						  	<div class="form-group col-md-4 input-group-lg">
+			
+						  	<div class="form-group col-xs-12 col-sm-12 col-md-4 input-group-lg">
 						    	<label for="Height">Height</label>
 						    	<input type="number"  class="form-control" placeholder="in centimeter" name="Height"
 						    	ng-model="Height">
 						  	</div>
-						  	<div class="form-group col-md-4 input-group-lg">
+						  	<div class="form-group col-xs-12 col-sm-12 col-md-4 input-group-lg">
 						    	<label for="Weight">Weight</label>
 						    	<input type="number"  class="form-control" placeholder="in kilogram" name="Weight"
 						    	ng-model="Weight">
 						  	</div>
-						  	<div class="form-group col-md-4 input-group-lg">
+						  	<div class="form-group col-xs-12 col-sm-12 col-md-4 input-group-lg">
 						    	<label for="BloodGp">Blood Groop</label>
 						    	<select class="form-control" name="BloodGp"
 						    	ng-model="BloodGp">
@@ -90,6 +98,27 @@
 						  </div>
 
 						  <div class="row">
+						  	<div class="form-group col-sm-12 col-xs-12 col-md-12">
+						  		<label>Gender: </label>
+						  		<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="male"
+								  ng-model="Gender">
+								  <label class="form-check-label" for="inlineRadio1">Male</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="female"
+								  ng-model="Gender">
+								  <label class="form-check-label" for="inlineRadio2">Female</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="other" value="option3"
+								  ng-model="Gender">
+								  <label class="form-check-label" for="inlineRadio3">Other</label>
+								</div>
+						  	</div>
+						  </div>
+
+						  <div class="row">
 						  	<div class="form-group col-md-12 input-group-lg">
 						    	<label for="Address">Address</label>
 						    	<input type="text"  class="form-control" placeholder="Enter address" name="Address"
@@ -98,19 +127,18 @@
 						  </div>
 
 						  <div class="row">
-						  	<div class="form-group col-md-12 input-group-lg">
+						  	<div class="form-group col-md-6 col-xs-12 col-sm-12 input-group-lg">
 						    	<label for="Pass1">Create Password</label>
 						    	<input type="password"  class="form-control" placeholder="Enter password" name="Pass1"
 						    	ng-model="Pass1">
 						  	</div>
-						  </div>
 
-						  <div class="row">
-						  	<div class="form-group col-md-12 input-group-lg">
+						  	<div class="form-group col-md-6 col-xs-12 col-sm-12 input-group-lg">
 						    	<label for="Pass2">Confirm Password</label>
 						    	<input type="password"  class="form-control" placeholder="Enter password again" name="Pass2"
 						    	ng-model="Pass2">
 						  	</div>
+
 						  </div>
 						  
 						  <div class="d-flex justify-content-center"><button class="btn btn-lg BtnRegister" ng-disabled="RegForm.$invalid" ng-click="onSubmit()">Register</button></div>

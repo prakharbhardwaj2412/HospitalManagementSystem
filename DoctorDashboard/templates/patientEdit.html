@@ -1,0 +1,27 @@
+<div class="container">
+	<div id="h1">UPDATE Patient: {}</div>
+	<div><a href="#"><i class="fas fa-arrow-left fa-2x"></i></a></div>
+
+	<div class="patientEdit">
+
+		<ul class="nav nav-tabs">
+		  <li class="nav-item">
+		    <a class="nav-link" ui-sref="patientEdit.patientInfo" ui-sref-active="activeNav" href="#">personal info</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" ui-sref="patientEdit.medicalReport" ui-sref-active="activeNav" href="#">medical report</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">medical history</a>
+		  </li>
+		</ul>
+
+		<ui-view></ui-view>
+
+		
+	</div>
+
+
+
+</div>
+<link rel="stylesheet" type="text/css" href="templates/patientEdit.css">

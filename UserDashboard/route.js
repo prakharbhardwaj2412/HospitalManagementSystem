@@ -10,27 +10,32 @@
 
 		$stateProvider.state('home', {
 			url: '/home',
-			templateUrl: 'templates/home.html'
+			templateUrl: 'templates/home.html',
+			controller: 'homeController'
 		})
 
 		$stateProvider.state('appointment', {
 			url: '/appointment',
-			templateUrl: 'templates/appointment.html'
+			templateUrl: 'templates/appointment.html',
+			controller: 'appointmentController'
 		})
 
 		$stateProvider.state('medicalHistory', {
 			url: '/medicalHistory',
-			templateUrl: 'templates/medicalHistory.html'
+			templateUrl: 'templates/medicalHistory.html',
+			controller: 'historyController'
 		})
 
 		$stateProvider.state('doctorsList', {
 			url: '/doctorsList',
-			templateUrl: 'templates/doctorslist.html'
+			templateUrl: 'templates/doctorslist.html',
+			controller: 'listController'
 		})
 
 		$stateProvider.state('profile', {
 			url: '/profile',
-			templateUrl: 'templates/profile.html'
+			templateUrl: 'templates/profile.html',
+			controller: 'profileController'
 		})
 
 

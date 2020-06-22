@@ -1,0 +1,171 @@
+<div class="container">
+	<div id="h1">UPDATE Patient: {}</div>
+	<div><a href="#"><i class="fas fa-arrow-left fa-2x"></i></a></div>
+
+	<div class="patientEdit">
+
+		<!-- <ul class="nav nav-tabs">
+		  <li class="nav-item">
+		    <a class="nav-link" ui-sref="patientEdit.patientInfo" ui-sref-active="activeNav" href="#">personal info</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" ui-sref="patientEdit.medicalReport" ui-sref-active="activeNav" href="#">medical report</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">medical history</a>
+		  </li>
+		</ul> -->
+
+		<form>
+
+	<div class="form-row">
+	    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		    <label for="infoPatientId">Patient Id</label>
+		    <input type="email" class="form-control" id="infoPatientId">
+		</div>
+
+		<div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		    <label for="infoName">Name</label>
+		    <input type="password" class="form-control" id="infoName">
+		</div>
+		
+		<div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		    <label for="infoStatus">Status</label>
+		    <select class="form-control" id="infoStatus">
+		    	<option>Active</option>
+			    <option>Inactive</option>
+			    <option>Serious</option>
+			   </select>
+		</div>
+		
+		<div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		    <label for="infoEmail">Email</label>
+		    <input type="password" class="form-control" id="infoEmail">
+		</div>
+		
+		<div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		    <label for="infoContact">Contact No.</label>
+		    <input type="password" class="form-control" id="infoContact">
+		</div>
+		
+		    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		      <label for="infoDOB">DOB</label>
+		      <input type="date" class="form-control" id="infoDOB">
+		    </div>
+
+		    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		      <label for="infoHeight">Height</label>
+		      <input type="number" class="form-control" id="infoHeight">
+		    </div>
+		    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		      <label for="infoWeight">Weight</label>
+		      <input type="number" class="form-control" id="infoWeight">
+		    </div>
+		    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+		      <label for="infoBlood">Blood Group</label>
+		      <input type="text" class="form-control" id="infoBlood">
+		    </div>
+		    <div class="form-group col-sm-12 col-xs-12 col-md-6 col-lg-4">
+			    <label for="infoGender">Gender</label>
+			    <select class="form-control" id="infoGender">
+			    	<option></option>
+		    		<option>Male</option>
+			    	<option>Female</option>
+			    	<option>Other</option>
+			   	</select>
+			</div>
+
+		  	<div class="form-group col-sm-12 col-xs-12 col-md-12 col-lg-4">
+		    	<label for="infoAddress">Address</label>
+		    	<input type="text" class="form-control" id="infoAddress" placeholder=" ">
+		  	</div>
+
+		  	<div class="form-group col-sm-12 col-xs-12 col-md-12 col-lg-4">
+		  		<label>Photo</label>
+		    	<center><img src="#"></center>
+		  	</div>
+
+		  </div>
+		  
+		  <center><button type="submit" class="btn btn-lg">Update</button></center>
+		</form>
+
+		
+	</div>
+
+
+
+</div>
+
+<style>
+	.container {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.container #h1 {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.patientEdit {
+	background-color: #ffffff;
+	border-radius: 25px;
+	height: 580px;
+	box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
+	margin-top: 10px;
+	padding: 20px;
+	overflow: auto;
+
+}
+
+.patientEdit .nav {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	/*background-color: #f5f5f5;*/
+}
+
+.form-control {
+	border: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+	border-radius: 0px;
+}
+
+label {
+	margin-bottom: 0;
+	letter-spacing: 1px;
+	font-weight: 550;
+}
+img {
+	height: 160px;
+	width: 130px;
+}
+
+#image {
+	/*opacity: 0;*/
+}
+
+.nav-tabs {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.nav-tabs .activeNav {
+	/*border: 1px solid transparent;*/
+	border-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.3) ;
+	color: #495057;
+	background-color: #fff;
+	border-bottom-color: white;
+}
+button {
+    background-color: #8d21fd;
+    background-image: linear-gradient(90deg, #8d21fd 0%, #6f21ff 100%);
+  }
+  button:hover {
+    background-color: #8d21fd;
+    background-image: linear-gradient(-90deg, #8d21fd 0%, #6f21ff 100%);
+    transform: translateY(-4px) scaleX(1.05);
+    transition: all 0.2s ease;
+
+  }
+
+</style>

@@ -1,0 +1,51 @@
+<form>
+
+  <div class="form-row form-group">
+    <label for="inputDate" class="col-md-1">Date:</label>
+    <div class="col-md-5">
+      <input type="date" class="form-control" id="inputDate">
+    </div>
+    <label for="inputTime" class="col-md-1">Time:</label>
+    <div class="col-md-5">
+      <input type="time" class="form-control" id="inputTime" placeholder="Password">
+    </div>
+  </div>
+
+  <div class="form-row form-group">
+    <label for="inputDisDes" class="col-md-2">Disease Description:</label>
+    <div class="col-md-10">
+      <input class="form-control" id="inputDisDes">
+    </div>
+  </div>
+
+  <div class="form-row form-group">
+    <label for="inputTest" class="col-md-1">Test:</label>
+    <div class="col-md-11">
+      <input class="form-control" id="inputTest">
+    </div>
+  </div>
+
+  <div class="form-row form-group">
+    <label for="inputReport" class="col-md-1">Report:</label>
+    <div class="col-md-11">
+      <textarea class="form-control" id="inputReport" rows="3"></textarea>
+    </div>
+  </div>
+ 
+  <center><button type="submit" class="btn btn-lg">Create Report</button></center>
+  
+</form>
+
+<style>
+  button {
+    background-color: #8d21fd;
+    background-image: linear-gradient(90deg, #8d21fd 0%, #6f21ff 100%);
+  }
+  button:hover {
+    background-color: #8d21fd;
+    background-image: linear-gradient(-90deg, #8d21fd 0%, #6f21ff 100%);
+    transform: translateY(-4px) scaleX(1.05);
+    transition: all 0.2s ease;
+
+  }
+</style>

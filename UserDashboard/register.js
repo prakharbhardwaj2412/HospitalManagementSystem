@@ -8,49 +8,84 @@ angular.module('RegisterFormApp')
 RegisterController.$inject = [ '$scope', '$http'];
 function RegisterController($scope, $http) {
 
-
 	  $scope.PtnName = "";
+	  $scope.PtnUsrnm = "";
 	  $scope.Email= "";
 	  $scope.ContactNo= "";
 	  $scope.Dob= "";
 	  $scope.Height= "";
 	  $scope.Weight= "";
 	  $scope.BloodGp= "";
+	  $scope.Gender = "";
+	  $scope.Address = "";
 	  $scope.Pass1= "";
 	  $scope.Pass2 = "";
 
+	  // $scope.UsernameCheck = function () {
+
+	  // 	var userObj = JSON.stringify({ "username": $scope.PtnUsrnm });
+
+	  // 	$http({
+	  //     method: "POST",
+	  //     url: "http://33d706fa0680.ngrok.io/registration/patient/",
+	  //     data: userObj
+	  //   })
+	  //   .then(
+	  //     function Success(response){
+	  //       $scope.myWelcome = response.data;
+	  //       console.log($scope.myWelcome);
+	  //       var Resp = $scope.myWelcome;
+	  //       if (Resp == "Username is taken") {
+	  //       	$scope.UsernameMessage = "This username is taken";
+	  //       }
+	  //       // else {}
+	  //     }, 
+	  //    function Error(response){
+	  //       $scope.myWelcome = response.statusText;
+	  //       console.log($scope.myWelcome);
+	  //     });
+	  // };
+
 	  $scope.onSubmit = function () {
 
+	  	var dob = document.getElementById("Dob").value;
+	  	console.log(dob);
+
 	  	var obj = { "name": $scope.PtnName,
+	  			"username": $scope.PtnUsrnm,
                 "email": $scope.Email,
-                "contact": $scope.ContactNo,
-                "dob": $scope.Dob,
+                "phone_no": $scope.ContactNo,
+                "dob": dob,
                 "height": $scope.Height,
                 "weight": $scope.Weight,
                 "blood": $scope.BloodGp,
-                "pass1": $scope.Pass1,
-                "pass2": $scope.Pass2 };
+                "gender": $scope.Gender,
+                "password": $scope.Pass1 };
+
 	  	console.log(obj);
 	  	var jsnObj = JSON.stringify(obj);
 	  	console.log(jsnObj);
 
-	    // $http({
-	    //   method: "POST",
-	    //   url: "#",
-	    //   data: jsnObj
-	    // })
-	    // .then(
-	    //   function Success(response){
-	    //     $scope.myWelcome = response.data;
-	    //     console.log($scope.myWelcome);
-	    //     window.location.assign("dashboard.html");
-	    //   }, 
-	    //  function Error(response){
-	    //     $scope.myWelcome = response.statusText;
-	    //     window.alert("wrong credientials");
-	    //     console.log($scope.myWelcome);
-	    //     console.log(jsnObj);
-	    //   });
+	    $http({
+	      method: "POST",
+	      url: "http://33d706fa0680.ngrok.io/registration/patient/",
+	      data: jsnObj
+	    })
+	    .then(
+	      function Success(response){
+	        $scope.myWelcome = response.data;
+	        console.log($scope.myWelcome);
+	        var ptnUsername = {"username": $scope.PtnUsrnm}
+	        sessionStorage.setItem("patientUsername", JSON.stringify(ptnUsername));
+	        window.location.assign("UserDashboard.html");
+	        
+	      }, 
+	     function Error(response){
+	        $scope.myWelcome = response.statusText;
+	        window.alert("wrong credientials");
+	        // console.log($scope.myWelcome);
+	        // console.log(jsnObj);
+	      });
 	    
 	  }
 	}

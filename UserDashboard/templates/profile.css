@@ -9,7 +9,55 @@
 img {
 	height: 200px;
 	width: 150px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
-#img {
-	/*float: right;*/
+.table {
+	/*float: left;*/
+	/*clear: left;*/
+	/*width: 70%;*/
 }
+table {
+	margin-top: 15px;
+}
+
+@media (min-width: 1200px) {
+	img {
+		float: right;
+	}
+	.table {
+		width: 70%;
+	}
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+    img {
+		float: right;
+	}
+    .table {
+		width: 70%;
+	}
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .table {
+		width: 100%;
+	}
+
+}
+
+@media (max-width: 767px) and (min-width: 576px) {
+	.table {
+		width: 100%;
+	}
+}
+
+
+@media (max-width: 575px) {
+	.table {
+		width: 100%;
+	}
+}
+
+
+
