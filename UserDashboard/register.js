@@ -21,30 +21,30 @@ function RegisterController($scope, $http) {
 	  $scope.Pass1= "";
 	  $scope.Pass2 = "";
 
-	  // $scope.UsernameCheck = function () {
+	  $scope.UsernameCheck = function () {
 
-	  // 	var userObj = JSON.stringify({ "username": $scope.PtnUsrnm });
+	  	var userObj = JSON.stringify({ "username": $scope.PtnUsrnm });
 
-	  // 	$http({
-	  //     method: "POST",
-	  //     url: "http://33d706fa0680.ngrok.io/registration/patient/",
-	  //     data: userObj
-	  //   })
-	  //   .then(
-	  //     function Success(response){
-	  //       $scope.myWelcome = response.data;
-	  //       console.log($scope.myWelcome);
-	  //       var Resp = $scope.myWelcome;
-	  //       if (Resp == "Username is taken") {
-	  //       	$scope.UsernameMessage = "This username is taken";
-	  //       }
-	  //       // else {}
-	  //     }, 
-	  //    function Error(response){
-	  //       $scope.myWelcome = response.statusText;
-	  //       console.log($scope.myWelcome);
-	  //     });
-	  // };
+	  	$http({
+	      method: "POST",
+	      url: "http://dac49860d95e.ngrok.io/registration/check_username/",
+	      data: userObj
+	    })
+	    .then(
+	      function Success(response){
+	        $scope.myWelcome = response.data;
+	        console.log($scope.myWelcome);
+	        var Resp = $scope.myWelcome;
+	        if (Resp == "This username is already taken") {
+	        	$scope.UsernameMessage = "This username is taken";
+	        }
+	        // else {}
+	      }, 
+	     function Error(response){
+	        $scope.myWelcome = response.statusText;
+	        console.log($scope.myWelcome);
+	      });
+	  };
 
 	  $scope.onSubmit = function () {
 
@@ -68,7 +68,7 @@ function RegisterController($scope, $http) {
 
 	    $http({
 	      method: "POST",
-	      url: "http://33d706fa0680.ngrok.io/registration/patient/",
+	      url: "http://dac49860d95e.ngrok.io/registration/patient/",
 	      data: jsnObj
 	    })
 	    .then(
@@ -76,7 +76,7 @@ function RegisterController($scope, $http) {
 	        $scope.myWelcome = response.data;
 	        console.log($scope.myWelcome);
 	        var ptnUsername = {"username": $scope.PtnUsrnm}
-	        sessionStorage.setItem("patientUsername", JSON.stringify(ptnUsername));
+	        sessionStorage.setItem("username", JSON.stringify(ptnUsername));
 	        window.location.assign("UserDashboard.html");
 	        
 	      }, 

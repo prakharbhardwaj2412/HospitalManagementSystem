@@ -5,46 +5,50 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Name:</label>
-      <span>{}</span>
+      <span>{{PatientName}}</span>
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Patient Id:</label>
-      <span> {}</span>
+      <span> {{PatientUsername}}</span>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Contact no:</label>
-      <span>{}</span>
+      <span>{{PatientContact}}</span>
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Email Id:</label>
-      <span> {}</span>
+      <span> {{PatientEmail}}</span>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-5">
       <label for="inputDep">Department</label>
-      <select id="inputDep" class="form-control">
+      <select id="inputDep" class="form-control"
+      ng-model="inputDep">
         <option selected>Choose...</option>
         <option>...</option>
       </select>
     </div>
     <div class="form-group col-md-4">
       <label for="inputName">Doctor Name</label>
-      <select id="inputName" class="form-control">
+      <select id="inputName" class="form-control"
+      ng-madel="inputName">
         <option selected>Choose...</option>
         <option>...</option>
       </select>
     </div>
     <div class="form-group col-md-3">
       <label for="inputZip">Doctor Id</label>
-      <input type="text" class="form-control" id="inputZip">
+      <input type="text" class="form-control" id="inputZip"
+      ng-model="inputDid">
     </div>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">Problem</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Describe your problem here"></textarea>
+    <label for="inputProblem">Problem</label>
+    <textarea class="form-control" id="inputProblem" rows="5" placeholder="Describe your problem here"
+    ng-model="inputProblem"></textarea>
   </div>
   <div class="form-row">
   	<div class="form-group col-md-6">
@@ -54,16 +58,18 @@
   	<div class="form-group col-md-6">
   		<label>Payment Status:</label>
   		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-  			<label class="form-check-label" for="inlineCheckbox1">Paid</label>
+  			<input class="form-check-input" type="checkbox" id="inputPaid" value="paid"
+        ng-model="inputPaymentpaid">
+  			<label class="form-check-label" for="inputPaid">Paid</label>
 		</div>
 		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  			<label class="form-check-label" for="inlineCheckbox2">Unpaid</label>
+  			<input class="form-check-input" type="checkbox" id="inputUnpaid" value="unpaid"
+        ng-model="inputPaymentunpaid">
+  			<label class="form-check-label" for="inputUnpaid">Unpaid</label>
 		</div>
   	</div>
   </div>
-  <center><button type="submit" class="btn btn-primary btn-lg d-flex justify-content-center">Confirm Appointment</button></center>
+  <center><button type="submit" class="btn btn-primary btn-lg d-flex justify-content-center" ng-click="appointment()">Confirm Appointment</button></center>
 </form>
 </div>
 <link rel="stylesheet" type="text/css" href="templates/appointment.css">

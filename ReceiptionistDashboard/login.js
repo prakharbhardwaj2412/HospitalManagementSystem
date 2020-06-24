@@ -8,11 +8,11 @@ angular.module('SigninFormApp')
 SigninController.$inject = [ '$scope', '$location', '$http' ];
 function SigninController($scope, $location, $http) {
 
-  $scope.UsrName = "";
-  $scope.Pass = "";
+  $scope.username = "";
+  $scope.password = "";
 
   $scope.onSubmit = function () {
-  	var obj = { "username": $scope.UsrName, "password": $scope.Pass};
+  	var obj = { "username": $scope.username, "password": $scope.password};
   	console.log(obj);
   	var jsnObj = JSON.stringify(obj);
   	console.log(jsnObj);
@@ -31,7 +31,7 @@ function SigninController($scope, $location, $http) {
         var Resp = $scope.myWelcome;
         if (Resp == "patient") {
           window.alert("Login Successful");
-          window.location.assign("UserDashboard.html");  
+          window.location.assign("RexeiptionistDashboard.html");  
         }
         else{
           window.alert("wrong credientials");

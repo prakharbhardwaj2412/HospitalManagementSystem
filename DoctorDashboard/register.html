@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Doctor | Register</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" type="text/css" href="UserDashboard.css"> -->
+
+	<!-- CSS only -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	
+
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+  	<script src="https://kit.fontawesome.com/c3f589f9ed.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="register.css">
+</head>
+<body ng-app="RegisterFormApp">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-1 col-sm-1 col-md-2 col-lg-3"></div>
+			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-6">
+				<div class="box" ng-controller="RegisterController as reg">
+					<form name="RegForm" novalidate>
+					  <div class="form-group row">
+					    <label for="docName" class="col-sm-3 col-form-label">Name</label>
+					    <div class="col-sm-9">
+					      <input type="text" class="form-control" id="docName"
+					      name="docName"
+					      ng-model="docName"
+					      required>
+					      <span
+						            ng-if=" RegForm.docName.$error.required && RegForm.docName.$touched">
+						            Name required
+				        </span>
+					    </div>
+					  </div>
+					  <div class="form-group row">
+					    <label for="docEmail" class="col-sm-3 col-form-label">Email</label>
+					    <div class="col-sm-9">
+					      <input type="email" class="form-control" id="docEmail"
+					      name="docEmail"
+					      ng-model="docEmail"
+					      required>
+					      <span 
+					      			ng-if="RegForm.docEmail.$invalid && RegForm.docEmail.$touched">Must be a valid email address: handle@domain format
+			          	</span>
+					    </div>
+					  </div>
+					  <div class="form-group row">
+					    <label for="docContact" class="col-sm-3 col-form-label">Contact</label>
+					    <div class="col-sm-9">
+					      <input type="number" class="form-control" id="docContact"
+					      name="docContact"
+					      ng-model="docContact"
+					      required
+					      minlength="10"
+					      maxlength="10"
+					      min="5999999999"
+					      max="9999999999">
+					      <span 
+					      			ng-if="RegForm.docContact.$error.required && RegForm.docContact.$touched">
+					      			Contact required
+			          	  </span>
+			          	<span 
+					      			ng-if="(RegForm.docContact.$error.minlength || RegForm.docContact.$error.maxlength) && RegForm.docContact.$touched">
+					      			Must contain 10 digits
+			          	</span>
+			          	<span 
+					      			ng-if="(RegForm.docContact.$error.min || RegForm.docContact.$error.max)">
+					      			Must start with 6, 7, 8 or 9
+			          	</span>
+
+					    </div>
+					  </div>					
+					    <div class=" form-group row">
+					    	<label class="col-sm-3 col-form-label" for="docGender">Gender</label>
+					    	<div class="col-sm-9">
+					    		<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="docMale" value="option1">
+								  <label class="form-check-label" for="docMale">Male</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="docFemale" value="option2">
+								  <label class="form-check-label" for="docFemale">Female</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="docOther" value="option3">
+								  <label class="form-check-label" for="docOther">Other</label>
+								</div>
+					    	</div>					     
+					    </div>
+
+					    <div class="form-group row">
+						    <label for="docSpeciality" class="col-sm-3 col-form-label">Speciality</label>
+						    <div class="col-sm-9">
+						      <select class="form-control" id="docSpeciality"
+						      name="docSpeciality"
+						      ng-model="docSpeciality"
+						      required>
+							      <option></option>
+							      <option>Cardio</option>
+							      <option>Neuro</option>
+							      <option>Ortho</option>
+							      <option>General</option>
+							  </select>
+							  <span 
+					      			ng-if="RegForm.docSpeciality.$error.required && RegForm.docSpeciality.$touched">
+					      			Speciality required
+				          	  </span>
+						    </div>
+						</div>
+
+					    <div class="form-group row">
+						    <label for="docPass1" class="col-sm-3 col-form-label">Create Password</label>
+						    <div class="col-sm-9">
+						      <input type="password" class="form-control" id="docPass1"
+						      name="docPass1"
+						      ng-model="docPass1"
+						      required
+						      minlength="4"
+						      maxlength="15">
+						      <span 
+					      			ng-if="RegForm.docPass1.$error.required && RegForm.docPass1.$touched">
+					      			Password required
+				          	  </span>
+						    </div>
+						</div>
+						<div class="form-group row">
+						    <label for="docPass2" class="col-sm-3 col-form-label">Confirm Password</label>
+						    <div class="col-sm-9">
+						      <input type="password" class="form-control" id="docPass2">
+						    </div>
+						</div>
+					  
+					  <div class="form-group row">
+					    <div class="col-sm-12">
+					      <center><button class="btn btn-primary btn-lg" id="btnSubmit" ng-disabled="RegForm.$invalid" ng-click="onSubmit()">Submit</button></center>
+					    </div>
+					  </div>
+					</form>
+
+				</div>
+			</div>
+			<div class="col-xs-1 col-sm-1 col-md-2 col-lg-3"></div>
+		</div>
+	</div>
+
+	<script src="../lib/angular.min.js"></script>
+    <script src="register.js"></script>
+
+</body>
+</html>

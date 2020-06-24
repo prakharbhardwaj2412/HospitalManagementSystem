@@ -1,0 +1,78 @@
+body {
+	height: 100vh;
+	background-image: url('https://previews.123rf.com/images/belchonock/belchonock1901/belchonock190116565/116262703-stethoscope-with-red-heart-on-white-wooden-background-flat-lay-space-for-text.jpg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.box {
+	width: 100%;
+	height: auto;
+	background-color: rgba(0, 0, 0, 0.7);
+	position: relative;
+	top: 30%;
+	padding: 4rem 4rem 6rem;
+	color: #ffffff;
+	/*left: -50%;*/
+}
+#btnLogin {
+	background-color: #0093E9;
+	background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+	color: #ffffff;
+	letter-spacing: 1px;
+	font-weight: 600;
+}
+
+#btnLogin:hover {
+	background-color: #0093E9;
+	background-image: linear-gradient(-160deg, #0093E9 0%, #80D0C7 100%);
+	transform: translateY(-2px) scaleX(1.05);
+	transition: all 0.4s ease;
+	box-shadow: 0 5px 10px rgba(256, 256, 256, 0.4);
+}
+
+.ng-touched.ng-valid {
+  border-bottom: 2px green solid;
+}
+
+.ng-touched.ng-invalid {
+  border-bottom: 3px red solid;
+}
+
+.form-group span {
+	font-size: 14px;
+	margin-top: 0;
+	color: red;
+}
+
+
+@media (min-width: 1200px) {
+  .box{
+  	left: -50%;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  .box {
+  	left: -30%;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .box {
+  	left: -28%;
+  }
+
+}
+
+@media (max-width: 767px) and (min-width: 576px) {
+}
+
+
+@media (max-width: 575px) {
+  .box {
+  	top: 25%;
+  	padding: 4rem 2.5rem 5rem;
+  }
+}
+
