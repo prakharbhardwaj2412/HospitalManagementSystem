@@ -10,23 +10,57 @@
 	function RegisterController($scope, $http) {
 		var reg = this;
 		$scope.docName = "";
+		$scope.docUsername= "";
 		$scope.docEmail= "";
 		$scope.docContact= "";
-		$scope.docGender = "";
+		$scope.docDob= "";
+		$scope.docGender = "Male";
 		$scope.docSpeciality = "";
-		$scope.Pass1= "";
-		$scope.Pass2 = "";
+		$scope.docPass1= "";
+		$scope.docPass2 = "";
+
+
+		$scope.UsernameCheck = function () {
+
+		  	var userObj = JSON.stringify({ "username": $scope.docUsername });
+
+		  	$http({
+		      method: "POST",
+		      url: "http://3f50481e0f7a.ngrok.io/registration/check_username/",
+		      data: userObj
+		    })
+		    .then(
+		      function Success(response){
+		        $scope.myWelcome = response.data;
+		        console.log($scope.myWelcome);
+		        var Resp = $scope.myWelcome;
+		        if (Resp == "This username is already taken") {
+		        	$scope.UsernameMessage = "This username is taken";
+		        }
+		        else if (Resp == "unique") {
+		        	$scope.UsernameMessage = "";
+		        }
+		      }, 
+		     function Error(response){
+		        $scope.myWelcome = response.statusText;
+		        console.log($scope.myWelcome);
+		      });
+	    };
 
 
 		$scope.onSubmit = function () {
 
+		var dob = document.getElementById("docDob").value;
+		console.log(dob);
 
 	  	var obj = { "name": $scope.docName,
+	  			"username": $scope.docUsername,
                 "email": $scope.docEmail,
                 "phone_no": $scope.docContact,
-                "speciality":$scope.docSpeciality,
+                "department":$scope.docSpeciality,
+                "dob": dob,
                 "gender": $scope.docGender,
-                "password": $scope.Pass1 };
+                "password": $scope.docPass1 };
 
 	  	console.log(obj);
 	  	var jsnObj = JSON.stringify(obj);
@@ -34,7 +68,7 @@
 
 	    $http({
 	      method: "POST",
-	      url: "http://dac49860d95e.ngrok.io/registration/patient/",
+	      url: "http://3f50481e0f7a.ngrok.io/registration/doctor/",
 	      data: jsnObj
 	    })
 	    .then(
@@ -42,13 +76,13 @@
 	        $scope.myWelcome = response.data;
 	        console.log($scope.myWelcome);
 	        var ptnUsername = {"username": $scope.PtnUsrnm}
-	        sessionStorage.setItem("username", JSON.stringify(ptnUsername));
+	        sessionStorage.setItem("DoctorUsername", JSON.stringify(ptnUsername));
 	        window.location.assign("DoctorDashboard.html");
 	        
 	      }, 
 	     function Error(response){
 	        $scope.myWelcome = response.statusText;
-	        window.alert("wrong credientials");
+	        window.alert("unable to process request");
 	        // console.log($scope.myWelcome);
 	        // console.log(jsnObj);
 	      });

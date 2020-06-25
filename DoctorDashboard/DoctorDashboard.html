@@ -39,21 +39,26 @@
 		  document.body.style.backgroundColor = "white";
 		}
 
+		function logOut() {
+			window.location.assign('login.html');
+			sessionStorage.clear();
+		}
+
 	</script>
 
 	<div id="mySidenav" class="sidenav">
   <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
-  <a  ui-sref="home" ui-sref-active="activeTab" href="#"><i class="fas fa-home"></i></a>
+  <a  ui-sref="home" ui-sref-active="activeTab" title="HOME" href="#"><i class="fas fa-home"></i></a>
 
-  <a href="#" ui-sref="appointment" ui-sref-active="activeTab"><i class="far fa-hospital"></i></a>
+  <!-- <a href="#" ui-sref="appointment" ui-sref-active="activeTab"><i class="far fa-hospital"></i></a> -->
 
-  <a href="#" ui-sref="medicalHistory" ui-sref-active="activeTab"><i class="fas fa-file-medical"></i></a>
+  <!-- <a href="#" ui-sref="medicalHistory" ui-sref-active="activeTab"><i class="fas fa-file-medical"></i></a> -->
 
-  <a href="#" ui-sref="doctorsList" ui-sref-active="activeTab"><i class="fas fa-user-md"></i></a>
+  <!-- <a href="#" ui-sref="doctorsList" ui-sref-active="activeTab"><i class="fas fa-user-md"></i></a> -->
 
-  <a href="#" ui-sref="patientList" ui-sref-active="activeTab"><i class="fas fa-user"></i></a>
+  <a href="#" ui-sref="patientList" ui-sref-active="activeTab"><i class="fas fa-users" title="PATIENT LIST"></i></a>
 
-  <a href="#" ui-sref="#" ui-sref-active="activeTab" id="logout"><i class="fa fa-sign-out"></i></a>
+  <a href="#" ui-sref="#" ui-sref-active="activeTab" id="logout"><i class="fa fa-sign-out" title="LOG OUT" onclick="logOut()"></i></a>
 
 </div>
 
@@ -89,8 +94,29 @@
 
 
 		<div class="col-md-4 col-lg-4 col-xl-4 sideSpace">
-			<div class="sidePlate">
+			<div class="sidePlate" ng-controller="mainController">
 				<div id="h1">Appointment Request</div>
+				<div class="notify">
+					<table class="table table-sm text-center">
+					  <thead>
+					    <tr>
+					      <th scope="col">Id</th>
+					      <th scope="col">Name</th>
+					      <th scope="col">App. Date</th>
+					      <th scope="col">View</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+				    	<tr ng-repeat="x in appList">
+					      <th scope="row">{{x.id}}</th>
+					      <td>{{x.patient__name}}</td>
+					      <td>{{x.date}}</td>
+					      <td><a href="#" ui-sref="appointmentRequest"><i id="x.id" class="far fa-eye" ng-click='view(x.id)'></i></a></td>
+					    </tr>
+					  </tbody>
+					</table>
+
+				</div>
 			</div>
 		</div>
 
@@ -108,6 +134,7 @@
 <!-- Modules -->
 <script src="module.js"></script>
 <script src="route.js"></script>
+<script src="controller.js"></script>
 
 </body>
 </html>

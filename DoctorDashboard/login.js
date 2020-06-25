@@ -12,12 +12,13 @@ function SigninController($scope, $location, $http) {
   $scope.password = "";
 
   $scope.onSubmit = function () {
+    sessionStorage.removeItem("doctor");
   	var obj = { "username": $scope.username, "password": $scope.password};
   	console.log(obj);
   	var jsnObj = JSON.stringify(obj);
   	console.log(jsnObj);
-    var storageObj = { "username": $scope.UsrName };
-    sessionStorage.setItem("username", JSON.stringify(storageObj));
+    var storageObj = { "username": $scope.username };
+    sessionStorage.setItem("doctor", JSON.stringify(storageObj));
 
     $http({
       method: "POST",
@@ -29,9 +30,9 @@ function SigninController($scope, $location, $http) {
         $scope.myWelcome = response.data;
         console.log($scope.myWelcome);
         var Resp = $scope.myWelcome;
-        if (Resp == "receptionist") {
+        if (Resp == "doctor") {
           window.alert("Login Successful");
-          window.location.assign("ReceiptionistDashboard.html");  
+          window.location.assign("DoctorDashboard.html");  
         }
         else{
           window.alert("wrong credientials");

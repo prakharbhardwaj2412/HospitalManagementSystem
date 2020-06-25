@@ -41,6 +41,23 @@
 					    </div>
 					  </div>
 					  <div class="form-group row">
+					    <label for="docUsername" class="col-sm-3 col-form-label">Username</label>
+					    <div class="col-sm-9">
+					      <input type="text" class="form-control" id="docUsername"
+					      name="docUsername"
+					      ng-model="docUsername"
+					      required
+					      ng-keyup="UsernameCheck()">
+					      <span>{{UsernameMessage}}</span>
+					      <span
+						            ng-if=" RegForm.docUsername.$error.required && RegForm.docUsername.$touched">
+						            Username required
+				        </span>
+					    </div>
+					  </div>
+
+
+					  <div class="form-group row">
 					    <label for="docEmail" class="col-sm-3 col-form-label">Email</label>
 					    <div class="col-sm-9">
 					      <input type="email" class="form-control" id="docEmail"
@@ -82,19 +99,33 @@
 					    	<label class="col-sm-3 col-form-label" for="docGender">Gender</label>
 					    	<div class="col-sm-9">
 					    		<div class="form-check form-check-inline">
-								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="docMale" value="option1">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="docMale" value="Male">
 								  <label class="form-check-label" for="docMale">Male</label>
 								</div>
 								<div class="form-check form-check-inline">
-								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="docFemale" value="option2">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="docFemale" value="Female">
 								  <label class="form-check-label" for="docFemale">Female</label>
 								</div>
 								<div class="form-check form-check-inline">
-								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="docOther" value="option3">
+								  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="docOther" value="Other">
 								  <label class="form-check-label" for="docOther">Other</label>
 								</div>
 					    	</div>					     
 					    </div>
+
+					    <div class="form-group row">
+					    <label for="docDob" class="col-sm-3 col-form-label">DOB</label>
+					    <div class="col-sm-9">
+					      <input type="date" class="form-control" id="docDob"
+					      name="docDob"
+					      ng-model="docDob"
+					      required>
+					      <span 
+					      			ng-if="RegForm.docDob.$error.required && RegForm.docDob.$touched">
+					      			Dob required
+			          	  </span>
+					    </div>
+					  </div>				
 
 					    <div class="form-group row">
 						    <label for="docSpeciality" class="col-sm-3 col-form-label">Speciality</label>

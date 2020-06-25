@@ -74,6 +74,8 @@ span {
 
 
 @media (max-width: 575px) {
-  
+  .box {
+  	top: 3%;
+  }
 }
 

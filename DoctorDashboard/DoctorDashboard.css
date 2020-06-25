@@ -128,7 +128,15 @@ body {
 .sideSpace #h1 {
   font-size: 2em;
   font-weight: 600;
+  margin-bottom: 10px;
 }
+.sidePlate .notify {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+
 
 @media (min-width: 1200px) {
   .sidenav {

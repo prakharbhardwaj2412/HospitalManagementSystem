@@ -6,7 +6,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="UserDashboard.css">
 
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -20,35 +19,33 @@
   	<script src="https://kit.fontawesome.com/c3f589f9ed.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="login.css">
 </head>
-<body>
+<body ng-app="SigninFormApp">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-1 col-sm-1 col-md-2 col-lg-3"></div>
 			<div class="col-xs-10 col-sm-10 col-md-8 col-lg-6">
-				<div class="box">
+				<div class="box" ng-controller="SigninController as sic">
 					<div class="h">Doctor Sign In</div>
 					<div class="container formDiv">
 						<form name="SigninForm" novalidate>
 							<div class="input-form">
-								<input type="text" name="UsrName" id="UsrName" placeholder="Enter UserName"
-								ng-model="UsrName"
+								<input type="text" name="username" id="UsrName" placeholder="Enter UserName"
+								ng-model="username"
 								required>
 								<label for="UsrName">Username</label>
 							</div>
 							<span
-						            ng-if=" SigninForm.UsrName.$error.required && SigninForm.UsrName.$touched">
+						            ng-if=" SigninForm.username.$error.required && SigninForm.username.$touched">
 						            Username required
 					        </span>
 							<div class="input-form">
-								<input type="password" name="Pass" id="Pass" placeholder="password"
-								ng-model="Pass"
+								<input type="password" name="password" id="Pass" placeholder="password"
+								ng-model="password"
 								required>
 								<label for="Pass">Password</label>
-								<!-- <button id="eye-btn" class="fa fa-eye"
-								style="background-color: #fff; border: none;"></button> -->
 							</div>
 							<span 
-							    ng-if="SigninForm.Pass.$error.required && SigninForm.Pass.$touched">
+							    ng-if="SigninForm.password.$error.required && SigninForm.password.$touched">
 								Password required
 							</span>
 						</form>
@@ -61,6 +58,9 @@
 			<div class="col-xs-1 col-sm-1 col-md-2 col-lg-3"></div>
 		</div>
 	</div>
+
+	<script src="../lib/angular.min.js"></script>
+    <script src="login.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,79 @@
+<div class="container">
+	<div id="h1">Appointment Requests</div>
+	<div class="appointmentBox">
+		<form>
+		  <div class="form-group row">
+		    <label class="col-sm-3">App. Id</label>
+		    <div class="col-sm-3">{{appDetail[0].id}}</div>
+		    <label class="col-sm-3">Patient Id</label>
+		    <div class="col-sm-3">{{appDetail[0].patient_id}}</div>
+		  </div>
+		  <div class="form-group row">
+		    <label class="col-sm-3">Patient Name</label>
+		    <div class="col-sm-3">{{appDetail[0].patient__name}}</div>
+		    <label class="col-sm-3">Contact</label>
+		    <div class="col-sm-3">{{appDetail[0].patient__phone_no}}</div>
+		  </div>
+		  <div class="form-group row">
+		    <label class="col-sm-3">Department</label>
+		    <div class="col-sm-3">{{appDetail[0].doctor__department}}</div>
+		    <label class="col-sm-3">Doctor Name</label>
+		    <div class="col-sm-3">{{appDetail[0].doctor__name}}</div>
+		  </div>
+		  <div class="form-group row">
+		    <label class="col-sm-3">Problem</label>
+		    <div class="col-sm-3">{{appDetail[0].problem}}</div>
+		    <label class="col-sm-3">Payment Status</label>
+		    <div class="col-sm-3">{{appDetail[0].payment_status}}</div>
+		  </div>
+		  <div class="form-group row">
+		    <label for="inputEmail3" class="col-sm-3">Message</label>
+		    <div class="col-sm-9">
+		      <input type="text" class="form-control" id="inputEmail3" placeholder="fill, if appointment is being rejected "
+		      name="regMsg"
+		      ng-model="regMsg">
+		    </div>
+		  </div>
+		  <div class="form-group row">
+		    <div class="col-sm-6">
+		      <button type="submit" class="btn btn-danger btn-lg" ng-click="reject()">Reject</button>
+		    </div>
+		    <div class="col-sm-6">
+		      <button type="submit" class="btn btn-success btn-lg" ng-click="forward()">Forward</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+
+
+
+</div>
+
+<style>
+	.container {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.container #h1 {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.appointmentBox {
+	background-color: #ffffff;
+	box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+	height: auto;
+	width: 100%;
+	border-radius: 25px;
+	font-size: 22px;
+	margin-top: 15px;
+	/*padding: 5px ;*/
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 3rem 2rem 3rem;
+}
+label {
+	font-weight: 550;
+	/*font-size: 25px;*/
+}
+</style>

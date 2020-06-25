@@ -6,12 +6,12 @@
 	UserConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 	function UserConfig($stateProvider, $urlRouterProvider) {
 
-		// $urlRouterProvider.otherwise('/home');
+		$urlRouterProvider.otherwise('/home');
 
-		// $stateProvider.state('home', {
-		// 	url: '/home',
-		// 	templateUrl: 'templates/home.html'
-		// })
+		$stateProvider.state('home', {
+			url: '/home',
+			templateUrl: 'templates/home.html'
+		})
 
 		$stateProvider.state('patientList', {
 			url: '/patientList',
@@ -35,10 +35,11 @@
 			templateUrl: 'templates/medicalReport.html'
 		})
 
-		// $stateProvider.state('profile', {
-		// 	url: '/profile',
-		// 	templateUrl: 'templates/profile.html'
-		// })
+		$stateProvider.state('appointmentRequest', {
+			url: '/appointmentRequest',
+			templateUrl: 'templates/appointmentRequest.html',
+			controller: 'appointmentRequestController'
+		})
 
 
 	}
