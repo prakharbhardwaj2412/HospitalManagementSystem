@@ -94,6 +94,7 @@ input:focus, input:not(:placeholder-shown) {
 	border-bottom: 3px solid #5956ce;
 	/*transform: scaleX(1.02);*/
 	transition: all 0.3s ease;
+	outline: none;
 
 }
 

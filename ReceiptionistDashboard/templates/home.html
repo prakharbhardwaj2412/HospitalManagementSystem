@@ -8,8 +8,8 @@
 
 	<!-- <div class="row"> -->
 		<div class="row tileContainer">
-			<div class="tile"><center><i class="fas fa-user-md fa-5x"></i></center><center>Doctor</center></div>
-			<div class="tile"><center><i class="fas fa-users fa-5x"></i></center><center>Patient</center></div>
+			<div class="tile"><center><i class="fas fa-user-md fa-5x"></i></center><center id="h1">Doctor</center></div>
+			<div class="tile"><center><i class="fas fa-users fa-5x"></i></center><center id="h1">Patient</center></div>
 		</div>
 	<!-- </div> -->
 
@@ -46,11 +46,22 @@
 .tile {
 	width: 35%;
 	height: 200px;
-	box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+	box-shadow:0 10px 10px rgba(0, 0, 0, 0.7);
 	background-color: #ffffff;
 	border-radius: 25px;
-	border: 1px solid rgba(0, 0, 0, 0.3);
+	border: 1px solid rgba(0, 0, 0, 0.1);
 	padding: 2rem 3rem 2rem;
+	color: rgba(0, 0, 0, 0.5);
+}
+#h1{
+	font-size: 2em;
+	font-weight: 600;
+}
+.tile:hover {
+	background-color: #8d21fd;
+  	background-image: linear-gradient(0deg, #8d21fd 0%, #6f21ff 100%);
+    color: #ffffff;
+
 }
 
 </style>

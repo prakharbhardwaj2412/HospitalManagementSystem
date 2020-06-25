@@ -8,21 +8,24 @@ angular.module('SigninFormApp')
 SigninController.$inject = [ '$scope', '$location', '$http' ];
 function SigninController($scope, $location, $http) {
 
+
+  sessionStorage.clear();
+
   $scope.username = "";
   $scope.password = "";
 
   $scope.onSubmit = function () {
-    sessionStorage.removeItem("doctor");
   	var obj = { "username": $scope.username, "password": $scope.password};
   	console.log(obj);
   	var jsnObj = JSON.stringify(obj);
   	console.log(jsnObj);
     var storageObj = { "username": $scope.username };
-    sessionStorage.setItem("doctor", JSON.stringify(storageObj));
+    sessionStorage.setItem("doctorUsername", JSON.stringify(storageObj));
+    console.log(sessionStorage.getItem("doctorUsername"));
 
     $http({
       method: "POST",
-      url: "http://3f50481e0f7a.ngrok.io/login/",
+      url: "http://990fd1c56ace.ngrok.io/login/",
       data: jsnObj
     })
     .then(

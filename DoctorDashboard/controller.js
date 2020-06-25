@@ -6,28 +6,34 @@
 	angular.module('DoctorApp')
 	.controller('homeController', homeController);
 	angular.module('DoctorApp')
-	.controller('appointmentController', appointmentController);
+	.controller('patientListController', patientListController);
 	angular.module('DoctorApp')
-	.controller('historyController', historyController);
-	angular.module('DoctorApp')
-	.controller('listController', listController);
-	angular.module('DoctorApp')
-	.controller('profileController', profileController);
+	.controller('patientEditController', patientEditController);
+	// angular.module('DoctorApp')
+	// .controller('historyController', historyController);
+	// angular.module('DoctorApp')
+	// .controller('listController', listController);
+	// angular.module('DoctorApp')
+	// .controller('profileController', profileController);
 	angular.module('DoctorApp')
 	.controller('appointmentRequestController', appointmentRequestController);
 
      // main controller
 	mainController.$inject = [ '$scope', '$http'];
 	function mainController($scope, $http){
+		var idObj = sessionStorage.getItem("doctorId");
+		// console.log(idObj);
+
+
 		$http({
-	      method: "GET",
-	      url: "http://3f50481e0f7a.ngrok.io/appointment/receptionist/requests/"
+	      method: "POST",
+	      url: "http://990fd1c56ace.ngrok.io/appointment/doctor/requests/",
+	      data: idObj
 	    })
 	    .then(
 	      function Success(response){
 	        $scope.appList = response.data;
 	        console.log($scope.appList);
-	  
 	      }, 
 	     function Error(response){
 	        $scope.myWelcome = response.statusText;
@@ -36,36 +42,30 @@
 	      });
 	    $scope.view = function(id) {
 	    	sessionStorage.setItem("id", JSON.stringify({"id": id}))
-	    	console.log(sessionStorage.getItem("id"));
+	    	// console.log(sessionStorage.getItem("id"));
 	    }
 	}
-
-
 
 	// home controller
 	homeController.$inject = [ '$scope', '$http'];
 	function homeController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
+		var usernameObj = sessionStorage.getItem("doctorUsername");
+		// console.log(usernameObj);
+
 
 		$http({
 	      method: "POST",
-	      url: "http://dac49860d95e.ngrok.io/patient/",
+	      url: "http://990fd1c56ace.ngrok.io/doctor/dashboard/",
 	      data: usernameObj
 	    })
 	    .then(
 	      function Success(response){
-	        $scope.myWelcome = response.data;
-	        console.log($scope.myWelcome);
-	        var Resp = $scope.myWelcome;
-	        console.log(Resp[0].name);
-	        $scope.PatientName = Resp[0].name;
-	        // if (Resp == "patient") {
-	        //   window.alert("Login Successful");
-	        //   window.location.assign("UserDashboard.html");  
-	        // }
-	        // else{
-	        //   window.alert("wrong credientials");
-	        // }
+	        $scope.docDetails = response.data;
+	        // console.log($scope.docDetails);
+	        var id = JSON.stringify({"id": $scope.docDetails[0].id});
+	        // console.log(id);
+	        sessionStorage.setItem("doctorId", id);
+	        // console.log(sessionStorage.getItem("doctorId"));
 	      }, 
 	     function Error(response){
 	        $scope.myWelcome = response.statusText;
@@ -74,26 +74,53 @@
 	      });
 	}
 
-	// appointment controller
-	appointmentController.$inject = [ '$scope', '$http'];
-	function appointmentController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
+	// patientListController
+	patientListController.$inject = [ '$scope', '$http'];
+	function patientListController($scope, $http){
+		var idObj = sessionStorage.getItem("doctorId");
+		console.log(idObj);
+
 
 		$http({
 	      method: "POST",
-	      url: "http://dac49860d95e.ngrok.io/patient/",
-	      data: usernameObj
+	      url: "http://990fd1c56ace.ngrok.io/doctor/patient_list/",
+	      data: idObj
 	    })
 	    .then(
 	      function Success(response){
-	        $scope.myWelcome = response.data;
+	        $scope.patientList = response.data;
+	        console.log($scope.patientList);
+	      }, 
+	     function Error(response){
+	        $scope.myWelcome = response.statusText;
+	        window.alert("cannot process request");
 	        console.log($scope.myWelcome);
-	        var Resp = $scope.myWelcome;
-	        $scope.PatientName = Resp[0].name ;
-	        $scope.PatientUsername = Resp[0].username;
-	        $scope.PatientContact = Resp[0].phone_no;
-	        $scope.PatientEmail = Resp[0].email;
-	        $scope.PatientId = Resp[0].id;
+	      });
+	}
+
+	// patientEditController
+	patientEditController.$inject = [ '$scope', '$http'];
+	function patientEditController($scope, $http){
+		
+	}
+
+
+	appointmentRequestController.$inject = [ '$scope', '$http'];
+	function appointmentRequestController($scope, $http) {
+		var id = sessionStorage.getItem("id");
+		// console.log(id);
+		// sessionStorage.removeItem("id");
+		$http({
+	      method: "POST",
+	      url: "http://990fd1c56ace.ngrok.io/appointment/doctor/appointment_details/",
+	      data: id
+	    })
+	    .then(
+	      function Success(response){
+	        $scope.appDetail = response.data;
+	        console.log($scope.appDetail);
+
+	        
 	        
 	      }, 
 	     function Error(response){
@@ -102,138 +129,69 @@
 	        console.log($scope.myWelcome);
 	      });
 
-	    $scope.inputDep = "";
-	    $scope.inputName = "";
-	    $scope.inputDid = "";
-	    $scope.inputProblem = "";
-	    $scope.inputPayment = "";
+	    $scope.regMsg = "";
 
-	    $scope.appointment = function() {
-	    	var appointmentObj = { "patient_id": $scope.PatientId,
-	    						"doctor_id": $scope.inputDid,
-	    						"problem": $scope.inputProblem,
-	    						"payment_status": $scope.inputPaymentpaid 	};
-	    	var appointmentJsn = JSON.stringify(appointmentObj);
-
+	    $scope.reject = function() {
+	    	var id = JSON.parse(sessionStorage.getItem("id"));
+	    	// console.log(id.id);
+	    	var reg = {"id": id.id,
+	    				"doctor_response": "rejected",
+	    				"doctor_reason": $scope.regMsg,
+	    				"status": "reject" };
 
 	    	$http({
 		      method: "POST",
-		      url: "http://dac49860d95e.ngrok.io/appointment/patient/",
-		      data: appointmentJsn
+		      url: "http://990fd1c56ace.ngrok.io/appointment/update_response/",
+		      data: reg
 		    })
 		    .then(
 		      function Success(response){
-		        $scope.myWelcome = response.data;
-		        console.log($scope.myWelcome);
-		        var Resp = $scope.myWelcome;
-		      }, 
+		        $scope.appDetail = response.data;
+		        console.log($scope.appDetail);
+
+		        
+		        
+		    }, 
 		     function Error(response){
 		        $scope.myWelcome = response.statusText;
 		        window.alert("cannot process request");
 		        console.log($scope.myWelcome);
-		      });
-	    };
+		    });
 
+
+
+
+	    }
+
+	    $scope.forward = function() {
+	    	var id = JSON.parse(sessionStorage.getItem("id"));
+	    	// console.log(id.id);
+	    	var reg = {"id": id.id,
+	    				"status": "Active" ,
+	    				"doctor_response": "approved"	};
+
+	    	$http({
+		      method: "POST",
+		      url: "http://990fd1c56ace.ngrok.io/appointment/update_response/",
+		      data: reg
+		    })
+		    .then(
+		      function Success(response){
+		        $scope.appDetail = response.data;
+		        console.log($scope.appDetail);
+
+		        
+		        
+		    }, 
+		     function Error(response){
+		        $scope.myWelcome = response.statusText;
+		        window.alert("cannot process request");
+		        console.log($scope.myWelcome);
+		    });
+
+	    }
 
 	}
-
-	// medical-history controller
-	historyController.$inject = [ '$scope', '$http'];
-	function historyController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
-
-		$http({
-	      method: "POST",
-	      url: "http://33d706fa0680.ngrok.io/login/",
-	      data: usernameObj
-	    })
-	    .then(
-	      function Success(response){
-	        $scope.myWelcome = response.data;
-	        console.log($scope.myWelcome);
-	        var Resp = $scope.myWelcome;
-	        if (Resp == "patient") {
-	          window.alert("Login Successful");
-	          window.location.assign("UserDashboard.html");  
-	        }
-	        else{
-	          window.alert("wrong credientials");
-	        }
-	      }, 
-	     function Error(response){
-	        $scope.myWelcome = response.statusText;
-	        window.alert("cannot process request");
-	        console.log($scope.myWelcome);
-	      });
-	}
-
-	// doctors list controller
-	listController.$inject = [ '$scope', '$http'];
-	function listController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
-
-		$http({
-	      method: "POST",
-	      url: "http://33d706fa0680.ngrok.io/login/",
-	      data: usernameObj
-	    })
-	    .then(
-	      function Success(response){
-	        $scope.myWelcome = response.data;
-	        console.log($scope.myWelcome);
-	        var Resp = $scope.myWelcome;
-	        if (Resp == "patient") {
-	          window.alert("Login Successful");
-	          window.location.assign("UserDashboard.html");  
-	        }
-	        else{
-	          window.alert("wrong credientials");
-	        }
-	      }, 
-	     function Error(response){
-	        $scope.myWelcome = response.statusText;
-	        window.alert("cannot process request");
-	        console.log($scope.myWelcome);
-	      });
-	}
-
-	// profile controller
-	profileController.$inject = [ '$scope', '$http'];
-	function profileController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
-
-		$http({
-	      method: "POST",
-	      url: "http://dac49860d95e.ngrok.io/patient/",
-	      data: usernameObj
-	    })
-	    .then(
-	      function Success(response){
-	        $scope.myWelcome = response.data;
-	        console.log($scope.myWelcome);
-	        var Resp = $scope.myWelcome;
-	        $scope.PatientName = Resp[0].name ;
-	        $scope.PatientUsername = Resp[0].username;
-	        $scope.PatientContact = Resp[0].phone_no;
-	        $scope.PatientEmail = Resp[0].email;
-	        $scope.PatientDob = Resp[0].dob;
-	        $scope.PatientWeight = Resp[0].weight;
-	        $scope.PatientHeight = Resp[0].height;
-	        $scope.PatientBlood = Resp[0].blood;
-	        $scope.PatientAddress = Resp[0].address;
-	        
-	      }, 
-	     function Error(response){
-	        $scope.myWelcome = response.statusText;
-	        window.alert("cannot process request");
-	        console.log($scope.myWelcome);
-	      });
-	}
-
-	appointmentRequestController.$inject = [ '$scope', '$http'];
-	function appointmentRequestController($scope, $http){
-	}
-
 
 
 

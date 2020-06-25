@@ -39,21 +39,26 @@
 		  document.body.style.backgroundColor = "white";
 		}
 
+		function logOut () {
+			sessionStorage.clear();
+			window.location.assign('login.html');
+		}
+
 	</script>
 
 	<div id="mySidenav" class="sidenav">
   <span href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</span>
-  <a  ui-sref="home" ui-sref-active="activeTab" href="#"><i class="fas fa-home"></i></a>
+  <a  ui-sref="home" ui-sref-active="activeTab" href="#"><i title="HOME" class="fas fa-home"></i></a>
 
-  <a href="#" ui-sref="appointment" ui-sref-active="activeTab"><i class="far fa-hospital"></i></a>
+  <a href="#" ui-sref="appointment" ui-sref-active="activeTab"><i title="APPOINTMENT" class="far fa-hospital"></i></a>
 
-  <a href="#" ui-sref="medicalHistory" ui-sref-active="activeTab"><i class="fas fa-file-medical"></i></a>
+  <a href="#" ui-sref="medicalHistory" ui-sref-active="activeTab"><i title="MEDICAL HISTORY" class="fas fa-file-medical"></i></a>
 
-  <a href="#" ui-sref="doctorsList" ui-sref-active="activeTab"><i class="fas fa-user-md"></i></a>
+  <!-- <a href="#" ui-sref="doctorsList" ui-sref-active="activeTab"><i class="fas fa-user-md"></i></a> -->
 
-  <a href="#" ui-sref="profile" ui-sref-active="activeTab"><i class="fas fa-user"></i></a>
+  <a href="#" ui-sref="profile" ui-sref-active="activeTab"><i title="PROFILE" class="fas fa-user"></i></a>
 
-  <a href="#" ui-sref="#" ui-sref-active="activeTab" id="logout"><i class="fa fa-sign-out"></i></a>
+  <a href="#" ui-sref="#" ui-sref-active="activeTab" onclick="logOut()" id="logout"><i title="LOG OUT" class="fa fa-sign-out"></i></a>
 
 </div>
 
@@ -74,8 +79,8 @@
 	 		</div>
 	    </div>
 	 	<span id="Notify" class="navbar-brand">
-	 	<i class="fas fa-user fa-lg"></i>
-	 	<i class="far fa-bell fa-lg"></i></span>
+	 	<!-- <i class="fas fa-user fa-lg"></i> -->
+	 	<i class="far fa-bell fa-lg" title="NOTIFICATION"></i></span>
 	</nav>
 
 	<div class="container-fluid">
@@ -89,8 +94,29 @@
 
 
 		<div class="col-md-4 col-lg-4 col-xl-4 sideSpace">
-			<div class="sidePlate">
+			<div class="sidePlate" ng-controller="mainController">
 				<div id="h1">Notification</div>
+				<div class="notify">
+					<table class="table table-sm text-center">
+					  <thead>
+					    <tr>
+					      <th scope="col">App. Id</th>
+					      <th scope="col">Date</th>
+					      <th scope="col">Status</th>
+					      <th scope="col">View</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+				    	<tr ng-repeat="x in appStatus">
+					      <th scope="row">{{x.id}}</th>
+					      <td>{{x.date}}</td>
+					      <td>{{x.status}}</td>
+					      <td><a href="#" ui-sref="appointmentRequest"><i id="x.id" class="far fa-eye" ng-click='view(x.id)'></i></a></td>
+					    </tr>
+					  </tbody>
+					</table>
+
+				</div>
 			</div>
 		</div>
 

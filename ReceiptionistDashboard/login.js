@@ -21,7 +21,7 @@ function SigninController($scope, $location, $http) {
 
     $http({
       method: "POST",
-      url: "http://3f50481e0f7a.ngrok.io/login/",
+      url: "http://990fd1c56ace.ngrok.io/login/",
       data: jsnObj
     })
     .then(

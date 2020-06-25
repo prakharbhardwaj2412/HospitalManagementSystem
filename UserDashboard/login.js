@@ -11,17 +11,19 @@ function SigninController($scope, $location, $http) {
   $scope.UsrName = "";
   $scope.Pass = "";
 
+  sessionStorage.clear();
+
   $scope.onSubmit = function () {
   	var obj = { "username": $scope.UsrName, "password": $scope.Pass};
-  	console.log(obj);
+  	// console.log(obj);
   	var jsnObj = JSON.stringify(obj);
-  	console.log(jsnObj);
+  	// console.log(jsnObj);
     var storageObj = { "username": $scope.UsrName };
-    sessionStorage.setItem("username", JSON.stringify(storageObj));
+    sessionStorage.setItem("PatientUsername", JSON.stringify(storageObj));
 
     $http({
       method: "POST",
-      url: "http://dac49860d95e.ngrok.io/login/",
+      url: "http://990fd1c56ace.ngrok.io/login/",
       data: jsnObj
     })
     .then(

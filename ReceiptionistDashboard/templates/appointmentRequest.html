@@ -36,10 +36,10 @@
 		  </div>
 		  <div class="form-group row">
 		    <div class="col-sm-6">
-		      <button type="submit" class="btn btn-danger btn-lg" ng-click="reject()">Reject</button>
+		      <button id="btn" type="submit" class="btn btn-danger btn-lg btn-block" ng-click="reject()">Reject</button>
 		    </div>
 		    <div class="col-sm-6">
-		      <button type="submit" class="btn btn-success btn-lg" ng-click="forward()">Forward</button>
+		      <button id="btn" type="submit" class="btn btn-success btn-lg btn-block" ng-click="forward()">Forward</button>
 		    </div>
 		  </div>
 		</form>
@@ -62,7 +62,7 @@
 
 .appointmentBox {
 	background-color: #ffffff;
-	box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow:0 10px 20px rgba(0, 0, 0, 0.5);
 	height: auto;
 	width: 100%;
 	border-radius: 25px;
@@ -75,5 +75,19 @@
 label {
 	font-weight: 550;
 	/*font-size: 25px;*/
+}
+#btn {
+	background-color: #8d21fd;
+  background-image: linear-gradient(90deg, #8d21fd 0%, #6f21ff 100%);
+
+}
+
+#btn:hover {
+	background-color: #8d21fd;
+  background-image: linear-gradient(-90deg, #8d21fd 0%, #6f21ff 100%);
+  transform: translateY(-1px) scaleX(1.02);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
 }
 </style>

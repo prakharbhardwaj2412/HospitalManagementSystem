@@ -25,48 +25,59 @@
   <div class="form-row">
     <div class="form-group col-md-5">
       <label for="inputDep">Department</label>
-      <select id="inputDep" class="form-control"
+      <select id="inputDep" ng-click="docNames()" class="form-control"
       ng-model="inputDep">
-        <option selected>Choose...</option>
-        <option>...</option>
+        <option ></option>
+        <option value="cardio">Cardio</option>
+        <option value="neuro">Neuro</option>
+        <!-- <option>Ortho</option> -->
       </select>
     </div>
     <div class="form-group col-md-4">
       <label for="inputName">Doctor Name</label>
       <select id="inputName" class="form-control"
-      ng-madel="inputName">
-        <option selected>Choose...</option>
-        <option>...</option>
+      ng-model="inputName" ng-options="x.name for x in depDoctors">
       </select>
     </div>
     <div class="form-group col-md-3">
-      <label for="inputZip">Doctor Id</label>
-      <input type="text" class="form-control" id="inputZip"
-      ng-model="inputDid">
+      <label for="inputDid">Doctor Id</label>
+      <select id="inputDid" class="form-control"
+      ng-model="inputDid" ng-options="y.id for y in depDoctors">
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputDate">Date of Appointment</label>
+      <input id="inputDate" type="date" class="form-control"
+      ng-model="inputDate">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputTime">Time of Appointment</label>
+      <input type="time" class="form-control" id="inputTime"
+      ng-model="inputTime">
     </div>
   </div>
   <div class="form-group">
     <label for="inputProblem">Problem</label>
-    <textarea class="form-control" id="inputProblem" rows="5" placeholder="Describe your problem here"
+    <textarea class="form-control" id="inputProblem" rows="2" placeholder="Describe your problem here"
     ng-model="inputProblem"></textarea>
   </div>
   <div class="form-row">
   	<div class="form-group col-md-6">
   		<label>Visiting Fee:</label>
-  		<span>{}</span>
+  		<span>500</span>
   	</div>
   	<div class="form-group col-md-6">
   		<label>Payment Status:</label>
-  		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inputPaid" value="paid"
-        ng-model="inputPaymentpaid">
-  			<label class="form-check-label" for="inputPaid">Paid</label>
-		</div>
-		<div class="form-check form-check-inline">
-  			<input class="form-check-input" type="checkbox" id="inputUnpaid" value="unpaid"
-        ng-model="inputPaymentunpaid">
-  			<label class="form-check-label" for="inputUnpaid">Unpaid</label>
-		</div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Paid" ng-model="inputPaymentpaid">
+      <label class="form-check-label" for="inlineRadio1">Paid</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Unpaid">
+      <label class="form-check-label" for="inlineRadio2">Unpaid</label>
+    </div>
   	</div>
   </div>
   <center><button type="submit" class="btn btn-primary btn-lg d-flex justify-content-center" ng-click="appointment()">Confirm Appointment</button></center>

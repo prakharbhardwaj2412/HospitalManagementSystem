@@ -2,6 +2,8 @@
 
 
 	angular.module('UserApp')
+	.controller('mainController', mainController);
+	angular.module('UserApp')
 	.controller('homeController', homeController);
 	angular.module('UserApp')
 	.controller('appointmentController', appointmentController);
@@ -12,14 +14,50 @@
 	angular.module('UserApp')
 	.controller('profileController', profileController);
 
-	// home controller
-	homeController.$inject = [ '$scope', '$http'];
-	function homeController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
+
+
+	// main controller
+	mainController.$inject = [ '$scope', '$http'];
+	function mainController($scope, $http){
+		var idObj = sessionStorage.getItem("PatientId");
+
 
 		$http({
 	      method: "POST",
-	      url: "http://dac49860d95e.ngrok.io/patient/",
+	      url: "http://990fd1c56ace.ngrok.io/patient/appointment_request/",
+	      data: idObj
+	    })
+	    .then(
+	      function Success(response){
+	        $scope.appStatus = response.data;
+	        console.log($scope.appStatus);
+	        // var Resp = $scope.myWelcome;
+	        // console.log(Resp[0].name);
+	        // $scope.PatientName = Resp[0].name;
+	        // sessionStorage.setItem("PatientId", JSON.stringify({"id": Resp[0].id}));
+	      }, 
+	     function Error(response){
+	        $scope.myWelcome = response.statusText;
+	        window.alert("cannot process request");
+	        console.log($scope.myWelcome);
+	      });
+	}
+
+	
+
+
+
+
+
+	// home controller
+	homeController.$inject = [ '$scope', '$http'];
+	function homeController($scope, $http){
+		var usernameObj = sessionStorage.getItem("PatientUsername");
+
+
+		$http({
+	      method: "POST",
+	      url: "http://990fd1c56ace.ngrok.io/patient/basic_details/",
 	      data: usernameObj
 	    })
 	    .then(
@@ -29,13 +67,7 @@
 	        var Resp = $scope.myWelcome;
 	        console.log(Resp[0].name);
 	        $scope.PatientName = Resp[0].name;
-	        // if (Resp == "patient") {
-	        //   window.alert("Login Successful");
-	        //   window.location.assign("UserDashboard.html");  
-	        // }
-	        // else{
-	        //   window.alert("wrong credientials");
-	        // }
+	        sessionStorage.setItem("PatientId", JSON.stringify({"id": Resp[0].id}));
 	      }, 
 	     function Error(response){
 	        $scope.myWelcome = response.statusText;
@@ -47,11 +79,11 @@
 	// appointment controller
 	appointmentController.$inject = [ '$scope', '$http'];
 	function appointmentController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
+		var usernameObj = sessionStorage.getItem("PatientUsername");
 
 		$http({
 	      method: "POST",
-	      url: "http://dac49860d95e.ngrok.io/patient/",
+	      url: "http://990fd1c56ace.ngrok.io/patient/basic_details/",
 	      data: usernameObj
 	    })
 	    .then(
@@ -76,19 +108,29 @@
 	    $scope.inputName = "";
 	    $scope.inputDid = "";
 	    $scope.inputProblem = "";
-	    $scope.inputPayment = "";
+	    // $scope.inputPayment = "";
 
 	    $scope.appointment = function() {
+	    	console.log($scope.inputDid);
+
+	    	var Did = $scope.inputDid;
+	    	console.log(Did);
+	    	console.log(Did.id);
+
+	    	var date = document.getElementById("inputDate").value;
+	    	var time = document.getElementById("inputTime").value;
 	    	var appointmentObj = { "patient_id": $scope.PatientId,
-	    						"doctor_id": $scope.inputDid,
+	    						"doctor_id": Did.id,
 	    						"problem": $scope.inputProblem,
-	    						"payment_status": $scope.inputPaymentpaid 	};
+	    						"payment_status": $scope.inputPaymentpaid,
+	    						"date": date,
+	    						"time": time  };
 	    	var appointmentJsn = JSON.stringify(appointmentObj);
 
 
 	    	$http({
 		      method: "POST",
-		      url: "http://dac49860d95e.ngrok.io/appointment/patient/",
+		      url: "http://990fd1c56ace.ngrok.io/appointment/patient/",
 		      data: appointmentJsn
 		    })
 		    .then(
@@ -103,6 +145,33 @@
 		        console.log($scope.myWelcome);
 		      });
 	    };
+        
+ 
+        $scope.docNames = function() {
+        	var departmentJsn = JSON.stringify({"department": $scope.inputDep});
+	        console.log(departmentJsn);
+        	$http({
+		      method: "POST",
+		      url: "http://990fd1c56ace.ngrok.io/doctor/list_by_department/",
+		      data: departmentJsn
+		    })
+		    .then(
+		      function Success(response){
+		        $scope.depDoctors = response.data;
+		        console.log($scope.depDoctors);
+		        console.log($scope.depDoctors[0].id);
+		      }, 
+		     function Error(response){
+		        $scope.myWelcome = response.statusText;
+		        window.alert("cannot process request");
+		        console.log($scope.myWelcome);
+		     });
+        }
+        // $scope.docId = function() {
+        // 	$scope.inputDid = 
+        // }
+
+	    
 
 
 	}
@@ -110,25 +179,20 @@
 	// medical-history controller
 	historyController.$inject = [ '$scope', '$http'];
 	function historyController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
+		var idObj = sessionStorage.getItem("PatientId");
+		console.log(idObj);
 
 		$http({
 	      method: "POST",
-	      url: "http://33d706fa0680.ngrok.io/login/",
-	      data: usernameObj
+	      url: "http://990fd1c56ace.ngrok.io/patient/medical_history/",
+	      data: idObj
 	    })
 	    .then(
 	      function Success(response){
-	        $scope.myWelcome = response.data;
-	        console.log($scope.myWelcome);
-	        var Resp = $scope.myWelcome;
-	        if (Resp == "patient") {
-	          window.alert("Login Successful");
-	          window.location.assign("UserDashboard.html");  
-	        }
-	        else{
-	          window.alert("wrong credientials");
-	        }
+	        $scope.MedicalHistory = response.data;
+	        console.log($scope.MedicalHistory);
+	        // var Resp = $scope.myWelcome;
+	        
 	      }, 
 	     function Error(response){
 	        $scope.myWelcome = response.statusText;
@@ -140,41 +204,41 @@
 	// doctors list controller
 	listController.$inject = [ '$scope', '$http'];
 	function listController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
+		// var usernameObj = sessionStorage.getItem("username");
 
-		$http({
-	      method: "POST",
-	      url: "http://33d706fa0680.ngrok.io/login/",
-	      data: usernameObj
-	    })
-	    .then(
-	      function Success(response){
-	        $scope.myWelcome = response.data;
-	        console.log($scope.myWelcome);
-	        var Resp = $scope.myWelcome;
-	        if (Resp == "patient") {
-	          window.alert("Login Successful");
-	          window.location.assign("UserDashboard.html");  
-	        }
-	        else{
-	          window.alert("wrong credientials");
-	        }
-	      }, 
-	     function Error(response){
-	        $scope.myWelcome = response.statusText;
-	        window.alert("cannot process request");
-	        console.log($scope.myWelcome);
-	      });
+	// 	$http({
+	//       method: "POST",
+	//       url: "http://33d706fa0680.ngrok.io/login/",
+	//       data: usernameObj
+	//     })
+	//     .then(
+	//       function Success(response){
+	//         $scope.myWelcome = response.data;
+	//         console.log($scope.myWelcome);
+	//         var Resp = $scope.myWelcome;
+	//         if (Resp == "patient") {
+	//           window.alert("Login Successful");
+	//           window.location.assign("UserDashboard.html");  
+	//         }
+	//         else{
+	//           window.alert("wrong credientials");
+	//         }
+	//       }, 
+	//      function Error(response){
+	//         $scope.myWelcome = response.statusText;
+	//         window.alert("cannot process request");
+	//         console.log($scope.myWelcome);
+	//       });
 	}
 
 	// profile controller
 	profileController.$inject = [ '$scope', '$http'];
 	function profileController($scope, $http){
-		var usernameObj = sessionStorage.getItem("username");
+		var usernameObj = sessionStorage.getItem("PatientUsername");
 
 		$http({
 	      method: "POST",
-	      url: "http://dac49860d95e.ngrok.io/patient/",
+	      url: "http://990fd1c56ace.ngrok.io/patient/basic_details/",
 	      data: usernameObj
 	    })
 	    .then(

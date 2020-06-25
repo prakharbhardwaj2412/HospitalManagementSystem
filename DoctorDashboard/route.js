@@ -10,17 +10,20 @@
 
 		$stateProvider.state('home', {
 			url: '/home',
-			templateUrl: 'templates/home.html'
+			templateUrl: 'templates/home.html',
+			controller: 'homeController'
 		})
 
 		$stateProvider.state('patientList', {
 			url: '/patientList',
-			templateUrl: 'templates/patientList.html'
+			templateUrl: 'templates/patientList.html',
+			controller: 'patientListController'
 		})
 
 		$stateProvider.state('patientEdit', {
 			url: '/patientEdit',
-			templateUrl: 'templates/patientEdit.html'
+			templateUrl: 'templates/patientEdit.html',
+			controller: 'patientEditController'
 		})
 
 		// $urlRouterProvider.otherwise('/patientEdit.patientInfo');
@@ -28,6 +31,7 @@
 		$stateProvider.state('patientEdit.patientInfo', {
 			url: '/patientInfo',
 			templateUrl: 'templates/patientInfo.html'
+			
 		})
 
 		$stateProvider.state('patientEdit.medicalReport', {

@@ -16,7 +16,7 @@
 	function mainController($scope, $http){
 		$http({
 	      method: "GET",
-	      url: "http://3f50481e0f7a.ngrok.io/appointment/receptionist/requests/"
+	      url: "http://990fd1c56ace.ngrok.io/appointment/receptionist/requests/"
 	    })
 	    .then(
 	      function Success(response){
@@ -63,7 +63,7 @@
 
 		$http({
 	      method: "GET",
-	      url: "http://3f50481e0f7a.ngrok.io/doctor/list/",
+	      url: "http://990fd1c56ace.ngrok.io/doctor/list/",
 	    })
 	    .then(
 	      function Success(response){
@@ -87,7 +87,7 @@
 
 		$http({
 	      method: "GET",
-	      url: "http://3f50481e0f7a.ngrok.io/patient/list/",
+	      url: "http://990fd1c56ace.ngrok.io/patient/list/",
 	    })
 	    .then(
 	      function Success(response){
@@ -110,7 +110,7 @@
 		// sessionStorage.removeItem("id");
 		$http({
 	      method: "POST",
-	      url: "http://3f50481e0f7a.ngrok.io/appointment/patient_details/",
+	      url: "http://990fd1c56ace.ngrok.io/appointment/patient_details/",
 	      data: id
 	    })
 	    .then(
@@ -134,11 +134,12 @@
 	    	// console.log(id.id);
 	    	var reg = {"id": id.id,
 	    				"receptionist_response": "rejected",
-	    				"receptionist_reason": $scope.regMsg};
+	    				"receptionist_reason": $scope.regMsg,
+	    				"status": "reject" };
 
 	    	$http({
 		      method: "POST",
-		      url: "http://3f50481e0f7a.ngrok.io/appointment/update_response/",
+		      url: "http://990fd1c56ace.ngrok.io/appointment/update_response/",
 		      data: reg
 		    })
 		    .then(
@@ -169,7 +170,7 @@
 
 	    	$http({
 		      method: "POST",
-		      url: "http://3f50481e0f7a.ngrok.io/appointment/update_response/",
+		      url: "http://990fd1c56ace.ngrok.io/appointment/update_response/",
 		      data: reg
 		    })
 		    .then(

@@ -39,6 +39,11 @@
 		  document.body.style.backgroundColor = "white";
 		}
 
+		function logOut () {
+			sessionStorage.clear();
+			window.location.assign('login.html');
+		}
+
 	</script>
 
 	<div id="mySidenav" class="sidenav">
@@ -49,9 +54,9 @@
 
   <a href="#" ui-sref="patientList" ui-sref-active="activeTab"><i class="fas fa-users" title="PATIENT LIST"></i></a>
 
-  <a href="#" ui-sref="appointmentRequest" ui-sref-active="activeTab"><i class="fas fa-file-medical" title="APPOINTMENT"></i></a>
+  <!-- <a href="#" ui-sref="appointmentRequest" ui-sref-active="activeTab"><i class="fas fa-file-medical" title="APPOINTMENT"></i></a> -->
 
-  <a href="#" ui-sref="appointmentList" ui-sref-active="activeTab"><i class="fas fa-file-medical" title="LOG OUT"></i></a>
+  <a href="#" ui-sref="appointmentList" ui-sref-active="activeTab"><i class="fas fa-file-medical" title="APPOINTMENT"></i></a>
 
 
 
@@ -59,7 +64,7 @@
 
   <a href="#" ui-sref="profile" ui-sref-active="activeTab"><i class="fas fa-user"></i></a>
  -->
-  <a href="#" ui-sref="#" ui-sref-active="activeTab" id="logout"><i class="fa fa-sign-out"></i></a>
+  <a href="#" ui-sref="#" ui-sref-active="activeTab" onclick="logOut()" title="LOG OUT" id="logout"><i class="fa fa-sign-out" ></i></a>
 
 </div>
 
@@ -80,7 +85,7 @@
 	 		</div>
 	    </div>
 	 	<span id="Notify" class="navbar-brand">
-	 	<i class="fas fa-user fa-lg"></i>
+	 	<!-- <i class="fas fa-user fa-lg"></i> -->
 	 	<i class="far fa-bell fa-lg"></i></span>
 	</nav>
 
@@ -97,6 +102,31 @@
 		<div class="col-md-4 col-lg-4 col-xl-4 sideSpace">
 			<div class="sidePlate" ng-controller="mainController">
 				<div id="h1">Notification</div>
+				<div class="form-row mt-2 mb-2">
+					<div class="col-sm-12 col-md-12">
+						<div class="input-group input-group-sm">
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" id="inputGroup-sizing-sm">Search By</span>
+						  </div>
+						  <select type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="searchBy">
+						  	<!-- <option></option> -->
+						  	<option value="id">Appointment Id</option>
+						  	<option value="patient__name">Patient Name</option>
+						  	<option value="payment_status">Payment Status</option>
+						  </select>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-12 mt-1">
+						<div class="input-group input-group-sm">
+						  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="Search">
+						  <div class="input-group-append">
+						    <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+						  </div>
+						</div>
+					</div>
+				</div>
+
+
 				<div class="notify">
 					<table class="table table-sm text-center">
 					  <thead>
@@ -108,7 +138,7 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-				    	<tr ng-repeat="x in appList">
+				    	<tr ng-repeat="x in appList | orderBy: searchBy | filter: Search">
 					      <th scope="row">{{x.id}}</th>
 					      <td>{{x.patient__name}}</td>
 					      <td>{{x.payment_status}}</td>

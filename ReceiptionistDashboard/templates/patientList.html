@@ -1,6 +1,32 @@
 <div class="container">
 	<div id="h1">Patient List</div>
-	<a href="#"><i class="fas fa-plus-square fa-2x"></i></a><span style="font-size:1.5em; font-weight: 540; padding-left: 10px;">Add Patient</span>
+	<!-- <a href="#"><i class="fas fa-plus-square fa-2x"></i></a><span style="font-size:1.5em; font-weight: 540; padding-left: 10px;">Add Patient</span> -->
+
+	<div class="form-row">
+		<div class="col-sm-6 col-md-6">
+			<div class="input-group mt-3">
+			  <div class="input-group-prepend">
+			    <span class="input-group-text" id="inputGroup-sizing-sm">Search By</span>
+			  </div>
+			  <select type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="searchBy">
+			  	<!-- <option></option> -->
+			  	<option value="id">Patient Id</option>
+			  	<option value="name">Patient Name</option>
+			  	<option value="gender">Gender</option>
+			  </select>
+			</div>
+		</div>
+		<div class="col-sm-6 col-md-6">
+			<div class="input-group mt-3">
+			  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="Search">
+			  <div class="input-group-append">
+			    <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+			  </div>
+			</div>
+		</div>
+	</div>
+
+
 
 
 	<table class="table table-borderless PatientTable text-center">
@@ -8,14 +34,16 @@
 		    <tr>
 		      <th scope="col">Patient Id</th>
 		      <th scope="col">Name</th>
+		      <th scope="col">Gender</th>
 		      <th scope="col">Status</th>
 		      <th scope="col">Edit</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr ng-repeat="x in pList">
+		    <tr ng-repeat="x in pList | orderBy: searchBy | filter: Search">
 		      <th scope="row">{{x.id}}</th>
 		      <td>{{x.name}}</td>
+		      <td>{{x.gender}}</td>
 		      <td>{{x.status}}</td>
 		      <td><a href="#" ui-sref="patientEdit"><i class="fas fa-edit"></i></a></td>
 		    </tr>
@@ -38,12 +66,13 @@
 
 .PatientTable {
 	background-color: #ffffff;
-	box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+	box-shadow:0 5px 10px rgba(0, 0, 0, 0.6);
 	height: auto;
 	width: 100%;
 	border-radius: 25px;
 	font-size: 22px;
 	margin-top: 15px;
 	/*padding: 5px ;*/
+	overflow: auto;
 }
 </style>

@@ -15,10 +15,10 @@
 		    <div class="col-sm-3">{{appDetail[0].patient__phone_no}}</div>
 		  </div>
 		  <div class="form-group row">
-		    <label class="col-sm-3">Department</label>
-		    <div class="col-sm-3">{{appDetail[0].doctor__department}}</div>
-		    <label class="col-sm-3">Doctor Name</label>
-		    <div class="col-sm-3">{{appDetail[0].doctor__name}}</div>
+		    <label class="col-sm-3">Date</label>
+		    <div class="col-sm-3">{{appDetail[0].date}}</div>
+		    <label class="col-sm-3">Time</label>
+		    <div class="col-sm-3">{{appDetail[0].time}}</div>
 		  </div>
 		  <div class="form-group row">
 		    <label class="col-sm-3">Problem</label>
@@ -36,10 +36,10 @@
 		  </div>
 		  <div class="form-group row">
 		    <div class="col-sm-6">
-		      <button type="submit" class="btn btn-danger btn-lg" ng-click="reject()">Reject</button>
+		      <button id="btn" type="submit" class="btn btn-danger btn-block" ng-click="reject()">Reject</button>
 		    </div>
 		    <div class="col-sm-6">
-		      <button type="submit" class="btn btn-success btn-lg" ng-click="forward()">Approve</button>
+		      <button id="btn" type="submit" class="btn btn-success btn-block" ng-click="forward()">Approve</button>
 		    </div>
 		  </div>
 		</form>
@@ -75,5 +75,19 @@
 label {
 	font-weight: 550;
 	/*font-size: 25px;*/
+}
+#btn {
+	background-color: #8d21fd;
+  background-image: linear-gradient(90deg, #8d21fd 0%, #6f21ff 100%);
+
+}
+
+#btn:hover {
+	background-color: #8d21fd;
+  background-image: linear-gradient(-90deg, #8d21fd 0%, #6f21ff 100%);
+  transform: translateY(-1px) scaleX(1.02);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
 }
 </style>
