@@ -1,0 +1,56 @@
+<div class="container">
+	<div id="h1">Appointment Confirmed</div>
+	<!-- <a href="#"><i class="fas fa-plus-square fa-2x"></i></a><span style="font-size:1.5em; font-weight: 540; padding-left: 10px;">Add Patient</span> -->
+
+
+	<table class="table table-borderless PatientTable text-center">
+		  <thead>
+		    <tr>
+		      <th scope="col">App. Id</th>
+		      <th scope="col">Name</th>
+		      <th scope="col">Date</th>
+		      <th scope="col">Time</th>
+		      <th scope="col">Problem</th>
+		      <th scope="col">View</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-repeat="x in appFixed">
+		      <th scope="row">{{x.id}}</th>
+		      <td>{{x.patient__name}}</td>
+		      <td>{{x.date}}</td>
+		      <td>{{x.time}}</td>
+		      <td>{{x.problem}}</td>
+		      <td><a href="#" ui-sref="patientEdit"><i class="fas fa-edit" ng-click="view(x.id)"></i></a></td>
+		    </tr>
+		</tbody>
+	</table>
+
+
+
+
+
+</div>
+<style>
+	.container {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.container #h1 {
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.PatientTable {
+	background-color: #ffffff;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+	height: auto;
+	width: 100%;
+	border-radius: 25px;
+	font-size: 22px;
+	margin-top: 15px;
+	/*padding: 5px ;*/
+	overflow: scroll;
+}
+</style>

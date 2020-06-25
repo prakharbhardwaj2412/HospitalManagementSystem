@@ -30,7 +30,8 @@
 
 		$stateProvider.state('patientEdit.patientInfo', {
 			url: '/patientInfo',
-			templateUrl: 'templates/patientInfo.html'
+			templateUrl: 'templates/patientInfo.html',
+			controller: 'patientInfoController'
 			
 		})
 
@@ -43,6 +44,12 @@
 			url: '/appointmentRequest',
 			templateUrl: 'templates/appointmentRequest.html',
 			controller: 'appointmentRequestController'
+		})
+
+		$stateProvider.state('appFixed', {
+			url: '/appFixed',
+			templateUrl: 'templates/appointmentConfirm.html',
+			controller: 'appFixedController'
 		})
 
 

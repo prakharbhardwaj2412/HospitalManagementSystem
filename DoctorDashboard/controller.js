@@ -13,10 +13,12 @@
 	// .controller('historyController', historyController);
 	// angular.module('DoctorApp')
 	// .controller('listController', listController);
-	// angular.module('DoctorApp')
-	// .controller('profileController', profileController);
+	angular.module('DoctorApp')
+	.controller('patientInfoController', patientInfoController);
 	angular.module('DoctorApp')
 	.controller('appointmentRequestController', appointmentRequestController);
+    angular.module('DoctorApp')
+	.controller('appFixedController', appFixedController);
 
      // main controller
 	mainController.$inject = [ '$scope', '$http'];
@@ -27,7 +29,7 @@
 
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/appointment/doctor/requests/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/doctor/requests/",
 	      data: idObj
 	    })
 	    .then(
@@ -193,7 +195,55 @@
 
 	}
 
+	appFixedController.$inject = [ '$scope', '$http'];
+	function appFixedController($scope, $http) {
+		var idObj = sessionStorage.getItem("doctorId");
+		console.log(idObj);
 
+
+		$http({
+	      method: "POST",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/doctor/live_appointments_list/",
+	      data: idObj
+	    })
+	    .then(
+	      function Success(response){
+	        $scope.appFixed = response.data;
+	        console.log($scope.appFixed);
+	      }, 
+	     function Error(response){
+	        $scope.myWelcome = response.statusText;
+	        window.alert("cannot process request");
+	        console.log($scope.myWelcome);
+	      });
+	    $scope.view= function(id) {
+	    	sessionStorage.setItem("AppConfId", JSON.stringify({"id": id}));
+	    }
+	}
+
+
+	patientInfoController.$inject = [ '$scope', '$http'];
+	function patientInfoController($scope, $http) {
+		var AppId = sessionStorage.getItem("AppConfId");
+		console.log(AppId);
+
+
+		$http({
+	      method: "POST",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/doctor/live_appointment_details/",
+	      data: AppId
+	    })
+	    .then(
+	      function Success(response){
+	        $scope.patientDetail = response.data;
+	        console.log($scope.patientDetail);
+	      }, 
+	     function Error(response){
+	        $scope.myWelcome = response.statusText;
+	        window.alert("cannot process request");
+	        console.log($scope.myWelcome);
+	      });
+	}
 
 
 
