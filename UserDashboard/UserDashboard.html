@@ -96,6 +96,29 @@
 		<div class="col-md-4 col-lg-4 col-xl-4 sideSpace">
 			<div class="sidePlate" ng-controller="mainController">
 				<div id="h1">Notification</div>
+				<div class="form-row mt-2 mb-2">
+					<div class="col-sm-12 col-md-12">
+						<div class="input-group input-group-sm">
+						  <div class="input-group-prepend">
+						    <span class="input-group-text" id="inputGroup-sizing-sm">Search By</span>
+						  </div>
+						  <select type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="searchBy">
+						  	<!-- <option></option> -->
+						  	<option value="id">Appointment Id</option>
+						  	<option value="date">Date</option>
+						  	<option value="status">Status</option>
+						  </select>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-12 mt-1">
+						<div class="input-group input-group-sm">
+						  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" ng-model="Search">
+						  <div class="input-group-append">
+						    <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+						  </div>
+						</div>
+					</div>
+				</div>
 				<div class="notify">
 					<table class="table table-sm text-center">
 					  <thead>
@@ -107,11 +130,11 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-				    	<tr ng-repeat="x in appStatus">
+				    	<tr ng-repeat="x in appStatus | orderBy: searchBy | filter: Search">
 					      <th scope="row">{{x.id}}</th>
 					      <td>{{x.date}}</td>
 					      <td>{{x.status}}</td>
-					      <td><a href="#" ui-sref="appointmentRequest"><i id="x.id" class="far fa-eye" ng-click='view(x.id)'></i></a></td>
+					      <td><a href="#" ui-sref="appointmentRequest"><i id="x.id" class="far fa-eye"></i></a></td>
 					    </tr>
 					  </tbody>
 					</table>

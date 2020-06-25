@@ -1,38 +1,38 @@
-<form>
+<form class="mt-4">
 
   <div class="form-row form-group">
-    <label for="inputDate" class="col-md-1">Date:</label>
-    <div class="col-md-5">
+    <label for="inputDate" class="col-md-2">Date:</label>
+    <div class="col-md-4">
       <input type="date" class="form-control" id="inputDate">
     </div>
-    <label for="inputTime" class="col-md-1">Time:</label>
-    <div class="col-md-5">
+    <label for="inputTime" class="col-md-2">Time:</label>
+    <div class="col-md-4">
       <input type="time" class="form-control" id="inputTime" placeholder="Password">
     </div>
   </div>
 
   <div class="form-row form-group">
-    <label for="inputDisDes" class="col-md-2">Disease Description:</label>
+    <label for="inputDisDes" class="col-md-2">Disease:</label>
     <div class="col-md-10">
-      <input class="form-control" id="inputDisDes">
+      <input class="form-control" id="inputDisDes" ng-model="disease">
     </div>
   </div>
 
   <div class="form-row form-group">
-    <label for="inputTest" class="col-md-1">Test:</label>
-    <div class="col-md-11">
-      <input class="form-control" id="inputTest">
+    <label for="inputTest" class="col-md-2">Medicine:</label>
+    <div class="col-md-10">
+      <input class="form-control" id="inputTest" ng-model="prescription">
     </div>
   </div>
 
   <div class="form-row form-group">
-    <label for="inputReport" class="col-md-1">Report:</label>
-    <div class="col-md-11">
-      <textarea class="form-control" id="inputReport" rows="3"></textarea>
+    <label for="inputReport" class="col-md-2">Report:</label>
+    <div class="col-md-10">
+      <textarea class="form-control" id="inputReport" rows="3" ng-model="report"></textarea>
     </div>
   </div>
  
-  <center><button type="submit" class="btn btn-lg">Create Report</button></center>
+  <center><button ng-click="reportCreate()" class="btn btn-lg">Create Report</button></center>
   
 </form>
 
@@ -40,6 +40,7 @@
   button {
     background-color: #8d21fd;
     background-image: linear-gradient(90deg, #8d21fd 0%, #6f21ff 100%);
+    margin-top: 2rem;
   }
   button:hover {
     background-color: #8d21fd;

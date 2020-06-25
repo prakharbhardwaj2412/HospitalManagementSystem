@@ -15,15 +15,13 @@ function SigninController($scope, $location, $http) {
 
   $scope.onSubmit = function () {
   	var obj = { "username": $scope.UsrName, "password": $scope.Pass};
-  	// console.log(obj);
   	var jsnObj = JSON.stringify(obj);
-  	// console.log(jsnObj);
     var storageObj = { "username": $scope.UsrName };
     sessionStorage.setItem("PatientUsername", JSON.stringify(storageObj));
 
     $http({
       method: "POST",
-      url: "http://990fd1c56ace.ngrok.io/login/",
+      url: "http://fd0c4ca9e6a0.ngrok.io/login/",
       data: jsnObj
     })
     .then(

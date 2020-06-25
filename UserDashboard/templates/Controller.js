@@ -24,7 +24,7 @@
 
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/patient/appointment_request/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/patient/appointment_request/",
 	      data: idObj
 	    })
 	    .then(
@@ -57,7 +57,7 @@
 
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/patient/basic_details/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/patient/basic_details/",
 	      data: usernameObj
 	    })
 	    .then(
@@ -83,7 +83,7 @@
 
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/patient/basic_details/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/patient/basic_details/",
 	      data: usernameObj
 	    })
 	    .then(
@@ -130,14 +130,14 @@
 
 	    	$http({
 		      method: "POST",
-		      url: "http://990fd1c56ace.ngrok.io/appointment/patient/",
+		      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/patient/",
 		      data: appointmentJsn
 		    })
 		    .then(
 		      function Success(response){
 		        $scope.myWelcome = response.data;
 		        console.log($scope.myWelcome);
-		        var Resp = $scope.myWelcome;
+		        window.alert($scope.myWelcome);
 		      }, 
 		     function Error(response){
 		        $scope.myWelcome = response.statusText;
@@ -152,7 +152,7 @@
 	        console.log(departmentJsn);
         	$http({
 		      method: "POST",
-		      url: "http://990fd1c56ace.ngrok.io/doctor/list_by_department/",
+		      url: "http://fd0c4ca9e6a0.ngrok.io/doctor/list_by_department/",
 		      data: departmentJsn
 		    })
 		    .then(
@@ -184,7 +184,7 @@
 
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/patient/medical_history/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/patient/medical_history/",
 	      data: idObj
 	    })
 	    .then(
@@ -238,7 +238,7 @@
 
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/patient/basic_details/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/patient/basic_details/",
 	      data: usernameObj
 	    })
 	    .then(

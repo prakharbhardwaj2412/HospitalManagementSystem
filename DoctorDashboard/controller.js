@@ -9,8 +9,8 @@
 	.controller('patientListController', patientListController);
 	angular.module('DoctorApp')
 	.controller('patientEditController', patientEditController);
-	// angular.module('DoctorApp')
-	// .controller('historyController', historyController);
+	angular.module('DoctorApp')
+	.controller('medicalReportController', medicalReportController);
 	// angular.module('DoctorApp')
 	// .controller('listController', listController);
 	angular.module('DoctorApp')
@@ -21,6 +21,8 @@
 	.controller('appFixedController', appFixedController);
 
      // main controller
+	
+
 	mainController.$inject = [ '$scope', '$http'];
 	function mainController($scope, $http){
 		var idObj = sessionStorage.getItem("doctorId");
@@ -57,7 +59,7 @@
 
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/doctor/dashboard/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/doctor/dashboard/",
 	      data: usernameObj
 	    })
 	    .then(
@@ -85,7 +87,7 @@
 
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/doctor/patient_list/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/doctor/patient_list/",
 	      data: idObj
 	    })
 	    .then(
@@ -114,7 +116,7 @@
 		// sessionStorage.removeItem("id");
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/appointment/doctor/appointment_details/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/doctor/appointment_details/",
 	      data: id
 	    })
 	    .then(
@@ -139,11 +141,11 @@
 	    	var reg = {"id": id.id,
 	    				"doctor_response": "rejected",
 	    				"doctor_reason": $scope.regMsg,
-	    				"status": "reject" };
+	    				"status": "rejected" };
 
 	    	$http({
 		      method: "POST",
-		      url: "http://990fd1c56ace.ngrok.io/appointment/update_response/",
+		      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/update_response/",
 		      data: reg
 		    })
 		    .then(
@@ -174,7 +176,7 @@
 
 	    	$http({
 		      method: "POST",
-		      url: "http://990fd1c56ace.ngrok.io/appointment/update_response/",
+		      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/update_response/",
 		      data: reg
 		    })
 		    .then(
@@ -220,6 +222,39 @@
 	    	sessionStorage.setItem("AppConfId", JSON.stringify({"id": id}));
 	    }
 	}
+
+	medicalReportController.$inject = [ '$scope', '$http'];
+	function medicalReportController($scope, $http) {
+		$scope.prescription="";
+		$scope.disease="";
+		$scope.report="";
+
+		$scope.reportCreate = function() {
+			var AppId = sessionStorage.getItem("AppConfId");
+			var id=JSON.parse(AppId).id;
+			console.log(id);
+			var reportObj = {	"id": id,
+							"after_disease": $scope.disease,
+							"report": $scope.report,
+							"prescription": $scope.prescription 	}
+			$http({
+		      method: "POST",
+		      url: "http://fd0c4ca9e6a0.ngrok.io/doctor/medical_report/add/",
+		      data: JSON.stringify(reportObj)
+		    })
+		    .then(
+		      function Success(response){
+		        $scope.appDetail = response.data;
+		        console.log($scope.appDetail);		        
+		    }, 
+		     function Error(response){
+		        $scope.myWelcome = response.statusText;
+		        window.alert("cannot process request");
+		        console.log($scope.myWelcome);
+		    });
+		}
+	}
+
 
 
 	patientInfoController.$inject = [ '$scope', '$http'];

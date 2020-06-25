@@ -37,7 +37,8 @@
 
 		$stateProvider.state('patientEdit.medicalReport', {
 			url: '/medicalReport',
-			templateUrl: 'templates/medicalReport.html'
+			templateUrl: 'templates/medicalReport.html',
+			controller: 'medicalReportController'
 		})
 
 		$stateProvider.state('appointmentRequest', {

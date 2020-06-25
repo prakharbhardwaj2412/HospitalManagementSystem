@@ -16,7 +16,7 @@
 	function mainController($scope, $http){
 		$http({
 	      method: "GET",
-	      url: "http://990fd1c56ace.ngrok.io/appointment/receptionist/requests/"
+	      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/receptionist/requests/"
 	    })
 	    .then(
 	      function Success(response){
@@ -36,25 +36,7 @@
 	}
 	// home controller
 	homeController.$inject = [ '$scope', '$http'];
-	function homeController($scope, $http){
-		// var usernameObj = sessionStorage.getItem("username");
-
-		// $http({
-	 //      method: "GET",
-	 //      url: "http://3f50481e0f7a.ngrok.io/appointment/details/"
-	 //    })
-	 //    .then(
-	 //      function Success(response){
-	 //        $scope.myWelcome = response.data;
-	 //        console.log($scope.myWelcome);
-	  
-	 //      }, 
-	 //     function Error(response){
-	 //        $scope.myWelcome = response.statusText;
-	 //        window.alert("cannot process request");
-	 //        console.log($scope.myWelcome);
-	 //      });
-	}
+	function homeController($scope, $http){}
 
 	// appointment controller
 	doctorListController.$inject = [ '$scope', '$http'];
@@ -63,7 +45,7 @@
 
 		$http({
 	      method: "GET",
-	      url: "http://990fd1c56ace.ngrok.io/doctor/list/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/doctor/list/",
 	    })
 	    .then(
 	      function Success(response){
@@ -76,8 +58,6 @@
 	        window.alert("cannot process request");
 	        console.log($scope.myWelcome);
 	      });
-
-
 	}
 
 	// medical-history controller
@@ -87,7 +67,7 @@
 
 		$http({
 	      method: "GET",
-	      url: "http://990fd1c56ace.ngrok.io/patient/list/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/patient/list/",
 	    })
 	    .then(
 	      function Success(response){
@@ -102,24 +82,21 @@
 	        console.log($scope.myWelcome);
 	      });
 	}
-	
 
+	// appointment request controller
 	appointmentRequestController.$inject = [ '$scope', '$http'];
 	function appointmentRequestController($scope, $http) {
 		var id = sessionStorage.getItem("id");
 		// sessionStorage.removeItem("id");
 		$http({
 	      method: "POST",
-	      url: "http://990fd1c56ace.ngrok.io/appointment/patient_details/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/receptionist/request_details/",
 	      data: id
 	    })
 	    .then(
 	      function Success(response){
 	        $scope.appDetail = response.data;
 	        console.log($scope.appDetail);
-
-	        
-	        
 	      }, 
 	     function Error(response){
 	        $scope.myWelcome = response.statusText;
@@ -135,30 +112,26 @@
 	    	var reg = {"id": id.id,
 	    				"receptionist_response": "rejected",
 	    				"receptionist_reason": $scope.regMsg,
-	    				"status": "reject" };
+	    				"status": "rejected" };
 
 	    	$http({
 		      method: "POST",
-		      url: "http://990fd1c56ace.ngrok.io/appointment/update_response/",
+		      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/update_response/",
 		      data: reg
 		    })
 		    .then(
 		      function Success(response){
 		        $scope.appDetail = response.data;
 		        console.log($scope.appDetail);
-
-		        
-		        
+		        if ($scope.appDetail="Your response is recieved") {
+		        	window.alert("Rejected");
+		        }
 		    }, 
 		     function Error(response){
 		        $scope.myWelcome = response.statusText;
 		        window.alert("cannot process request");
 		        console.log($scope.myWelcome);
 		    });
-
-
-
-
 	    }
 
 	    $scope.forward = function() {
@@ -170,37 +143,23 @@
 
 	    	$http({
 		      method: "POST",
-		      url: "http://990fd1c56ace.ngrok.io/appointment/update_response/",
+		      url: "http://fd0c4ca9e6a0.ngrok.io/appointment/update_response/",
 		      data: reg
 		    })
 		    .then(
 		      function Success(response){
 		        $scope.appDetail = response.data;
 		        console.log($scope.appDetail);
-
-		        
-		        
+		        if ($scope.appDetail="Your response is recieved") {
+		        	window.alert("Forwarded to Doctor");
+		        }
 		    }, 
 		     function Error(response){
 		        $scope.myWelcome = response.statusText;
 		        window.alert("cannot process request");
 		        console.log($scope.myWelcome);
 		    });
-
-
-
-
 	    }
-
-
-
-
-
-
-
-
-
-
 	}
 
 })();

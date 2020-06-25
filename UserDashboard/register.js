@@ -21,13 +21,15 @@ function RegisterController($scope, $http) {
 	  $scope.Pass1= "";
 	  $scope.Pass2 = "";
 
+	  sessionStorage.clear();
+
 	  $scope.UsernameCheck = function () {
 
 	  	var userObj = JSON.stringify({ "username": $scope.PtnUsrnm });
 
 	  	$http({
 	      method: "POST",
-	      url: "http://dac49860d95e.ngrok.io/registration/check_username/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/registration/check_username/",
 	      data: userObj
 	    })
 	    .then(
@@ -38,7 +40,6 @@ function RegisterController($scope, $http) {
 	        if (Resp == "This username is already taken") {
 	        	$scope.UsernameMessage = "This username is taken";
 	        }
-	        // else {}
 	      }, 
 	     function Error(response){
 	        $scope.myWelcome = response.statusText;
@@ -68,7 +69,7 @@ function RegisterController($scope, $http) {
 
 	    $http({
 	      method: "POST",
-	      url: "http://dac49860d95e.ngrok.io/registration/patient/",
+	      url: "http://fd0c4ca9e6a0.ngrok.io/registration/patient/",
 	      data: jsnObj
 	    })
 	    .then(
@@ -76,15 +77,13 @@ function RegisterController($scope, $http) {
 	        $scope.myWelcome = response.data;
 	        console.log($scope.myWelcome);
 	        var ptnUsername = {"username": $scope.PtnUsrnm}
-	        sessionStorage.setItem("username", JSON.stringify(ptnUsername));
+	        sessionStorage.setItem("PatientUsername", JSON.stringify(ptnUsername));
 	        window.location.assign("UserDashboard.html");
 	        
 	      }, 
 	     function Error(response){
 	        $scope.myWelcome = response.statusText;
 	        window.alert("wrong credientials");
-	        // console.log($scope.myWelcome);
-	        // console.log(jsnObj);
 	      });
 	    
 	  }

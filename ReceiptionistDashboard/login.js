@@ -11,6 +11,7 @@ function SigninController($scope, $location, $http) {
   $scope.username = "";
   $scope.password = "";
 
+  sessionStorage.clear();
   $scope.onSubmit = function () {
   	var obj = { "username": $scope.username, "password": $scope.password};
   	console.log(obj);
@@ -21,7 +22,7 @@ function SigninController($scope, $location, $http) {
 
     $http({
       method: "POST",
-      url: "http://990fd1c56ace.ngrok.io/login/",
+      url: "http://fd0c4ca9e6a0.ngrok.io/login/",
       data: jsnObj
     })
     .then(
